@@ -14,7 +14,7 @@ import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import type { Vehicle, VehicleStatus } from '@/features/dashboard/types'
 import { formatFullDateTimeSeconds } from '@/features/dashboard/format'
-import { Alerts, NoAlerts, ValuePill } from '@/features/dashboard/VehicleParts'
+import { Alerts, NoAlerts, ValuePill } from '@/components/vehicle/VehicleParts'
 import { formatAgoSeconds } from './geo'
 import type { LiveTrack } from './types'
 

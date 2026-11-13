@@ -1,14 +1,15 @@
 import { faMagnifyingGlass, faTriangleExclamation, faTruck } from '@fortawesome/free-solid-svg-icons'
 import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { EmptyState, VehiclesSkeleton } from './DashboardStates'
+import { EmptyState } from '@/components/EmptyState'
+import { VehicleCard } from '@/components/vehicle/VehicleCard'
+import { VehiclesSkeleton } from './DashboardStates'
 import { KpiRow } from './KpiRow'
 import { Pagination } from './Pagination'
 import { PAGE_SIZE_HINT, VEHICLE_GRID } from './layout'
 import { DeviceTypeFilter, SearchBox } from './Toolbar'
 import type { PlanFilter, Vehicle } from './types'
 import { useDeviceTypes, useVehicleKpis, useVehicles } from './useVehicles'
-import { VehicleCard } from './VehicleViews'
 
 const SKELETONS = 9
 

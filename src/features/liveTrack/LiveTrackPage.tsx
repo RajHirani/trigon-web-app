@@ -2,7 +2,8 @@ import { faTriangleExclamation, faTruck } from '@fortawesome/free-solid-svg-icon
 import type L from 'leaflet'
 import { useCallback, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { EmptyState } from '@/features/dashboard/DashboardStates'
+import { useGoBack } from '@/hooks/useGoBack'
+import { EmptyState } from '@/components/EmptyState'
 import { useVehicle } from '@/features/vehicleDetails/useVehicleDetails'
 import { LiveHeader, MapControls, PathLegend } from './LiveOverlays'
 import { LiveMap } from './LiveMap'
@@ -29,11 +30,7 @@ export default function LiveTrackPage() {
   const [collapsed, setCollapsed] = useState(narrow)
   const [sharing, setSharing] = useState(false)
 
-  const goBack = useCallback(() => {
-    // Back to where the user came from (dashboard or View More); a direct visit goes to the dashboard.
-    if ((window.history.state as { idx?: number } | null)?.idx) navigate(-1)
-    else navigate('/dashboard')
-  }, [navigate])
+  const goBack = useGoBack()
   const stopFollowing = useCallback(() => setFollow(false), [])
 
   const v = vehicle.data

@@ -1,7 +1,7 @@
 import { faBolt, faGasPump, faSnowflake } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { SpeedGauge } from './SpeedGauge'
-import type { Vehicle } from './types'
+import type { Vehicle } from '@/features/dashboard/types'
 import {
   ActionButtons,
   Alerts,

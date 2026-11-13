@@ -1,4 +1,4 @@
-import type { VehicleStatus } from './types'
+import type { VehicleStatus } from '@/features/dashboard/types'
 
 const W = 150
 const H = 124

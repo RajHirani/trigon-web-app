@@ -1,0 +1,12 @@
+// Shared building blocks. Import from '@/components'.
+export { Calendar } from './Calendar'
+export { ConfirmDialog } from './ConfirmDialog'
+export { DateRangePicker, type DateRange } from './DateRangePicker'
+export { EmptyState } from './EmptyState'
+export { Modal, ModalActions } from './Modal'
+export { Skeleton, Spinner } from './Spinner'
+export { TrigonLoader } from './TrigonLoader'
+export { SpeedGauge } from './vehicle/SpeedGauge'
+export { VehicleCard } from './vehicle/VehicleCard'
+export { VehicleCardSkeleton } from './vehicle/VehicleCardSkeleton'
+export { ActionButtons, Alerts, NoAlerts, StatusPill, UpdatedPanel, ValuePill, VehicleIcon, type VehicleActions } from './vehicle/VehicleParts'

@@ -2,7 +2,7 @@ import { faArrowLeft, faLayerGroup, faLocationCrosshairs, faRoute } from '@forta
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useRef, useState } from 'react'
 import type { Vehicle } from '@/features/dashboard/types'
-import { StatusPill } from '@/features/dashboard/VehicleParts'
+import { StatusPill } from '@/components/vehicle/VehicleParts'
 import { formatAgoSeconds, formatClock } from './geo'
 import { MAP_LAYERS, type MapLayer } from './types'
 

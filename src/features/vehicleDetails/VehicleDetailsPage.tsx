@@ -1,10 +1,11 @@
-import { faClock, faClockRotateLeft, faLocationCrosshairs, faTriangleExclamation, faTruck } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft, faClock, faClockRotateLeft, faLocationCrosshairs, faTriangleExclamation, faTruck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useCallback, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { EmptyState } from '@/features/dashboard/DashboardStates'
+import { EmptyState } from '@/components/EmptyState'
+import { useGoBack } from '@/hooks/useGoBack'
 import { formatAgo, formatDayStart, formatFullDateTimeSeconds } from '@/features/dashboard/format'
-import { StatusPill, VehicleIcon } from '@/features/dashboard/VehicleParts'
+import { StatusPill, VehicleIcon } from '@/components/vehicle/VehicleParts'
 import { LockDialog } from './LockDialog'
 import { AddressCard, SummarySkeleton, SummaryTiles } from './SummaryTiles'
 import { useSetDeviceLock, useVehicle, useVehicleSummary } from './useVehicleDetails'
@@ -16,6 +17,7 @@ const PULSE = 'motion-safe:animate-pulse'
 export default function VehicleDetailsPage() {
   const { vehicleId } = useParams()
   const navigate = useNavigate()
+  const goBack = useGoBack()
   const vehicle = useVehicle(vehicleId)
   const summary = useVehicleSummary(vehicleId)
   const lock = useSetDeviceLock(vehicleId ?? '')
@@ -53,6 +55,16 @@ export default function VehicleDetailsPage() {
 
   return (
     <div className="flex flex-col gap-5">
+      <div>
+        <button
+          type="button"
+          onClick={goBack}
+          className="inline-flex h-10 items-center gap-2 rounded-lg border border-line bg-surface px-3.5 text-[13px] font-medium text-control hover:bg-surface-muted"
+        >
+          <FontAwesomeIcon icon={faArrowLeft} />
+          Back
+        </button>
+      </div>
       <section className="flex flex-wrap items-center gap-x-6 gap-y-4 rounded-2xl border border-line bg-surface p-5 sm:p-6">
         {v ? (
           <>

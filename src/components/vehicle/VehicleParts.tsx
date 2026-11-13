@@ -11,8 +11,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { formatAgo, formatFullDateTime, formatFullDateTimeSeconds } from './format'
-import type { Vehicle, VehicleAlert, VehicleStatus } from './types'
+import { formatAgo, formatFullDateTime, formatFullDateTimeSeconds } from '@/features/dashboard/format'
+import type { Vehicle, VehicleAlert, VehicleStatus } from '@/features/dashboard/types'
 
 export type VehicleActions = {
   onLiveTrack?: (v: Vehicle) => void
