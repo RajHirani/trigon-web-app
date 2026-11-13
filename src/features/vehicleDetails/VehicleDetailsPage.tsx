@@ -81,8 +81,7 @@ export default function VehicleDetailsPage() {
               </button>
               <button
                 className={`${BTN} border border-line bg-surface text-control hover:bg-surface-muted`}
-                disabled
-                title="Play Back is not built yet"
+                onClick={() => navigate(`/playback/${v.id}`)}
               >
                 <FontAwesomeIcon icon={faClockRotateLeft} />
                 Play Back

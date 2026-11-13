@@ -92,6 +92,7 @@ export default function LiveTrackPage() {
             collapsed={collapsed}
             onToggle={() => setCollapsed((c) => !c)}
             onShare={() => setSharing(true)}
+            onPlayBack={() => navigate(`/playback/${v.id}`)}
             onViewMore={() => navigate(`/dashboard/${v.id}`)}
             onDriveTo={() =>
               window.open(`https://www.google.com/maps/dir/?api=1&destination=${track.lat},${track.lng}`, '_blank', 'noopener,noreferrer')

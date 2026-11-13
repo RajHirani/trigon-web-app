@@ -16,7 +16,7 @@ export type MenuItem = {
   label: string
   icon: IconDefinition
   roles?: readonly string[]
-  /** Other route prefixes that keep this item highlighted (Live Track is opened from the Dashboard, so Dashboard stays lit; it is separate from Fleet Tracking). */
+  /** Other route prefixes that keep this item highlighted (Live Track and Playback are opened from the Dashboard, so Dashboard stays lit; they are separate from Fleet Tracking). */
   alsoActiveFor?: readonly string[]
 }
 export type MenuGroup = { title: string; items: readonly MenuItem[] }
@@ -26,7 +26,7 @@ export const MENU: readonly MenuGroup[] = [
   {
     title: 'Monitor',
     items: [
-      { path: '/dashboard', label: 'Dashboard', icon: faGauge, alsoActiveFor: ['/live'] },
+      { path: '/dashboard', label: 'Dashboard', icon: faGauge, alsoActiveFor: ['/live', '/playback'] },
       { path: '/fleet', label: 'Fleet Tracking', icon: faRoute },
       { path: '/geofence', label: 'Geofence', icon: faDrawPolygon },
     ],

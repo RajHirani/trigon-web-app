@@ -42,13 +42,15 @@ export function LiveHeader({ vehicle, updatedAt, now, onBack }: HeaderProps) {
 const CTRL = `${FLOAT} flex h-11 w-11 items-center justify-center text-control hover:bg-surface-muted`
 
 type ControlsProps = {
-  follow: boolean
-  showPath: boolean
+  follow?: boolean
+  showPath?: boolean
   layer: MapLayer
   onZoomIn: () => void
   onZoomOut: () => void
-  onToggleFollow: () => void
-  onTogglePath: () => void
+  /** Omit to hide the Follow button (Playback hides it when there is no route). */
+  onToggleFollow?: () => void
+  /** Omit to hide the Today's path button (Playback has no such switch). */
+  onTogglePath?: () => void
   onLayerChange: (l: MapLayer) => void
 }
 
@@ -117,32 +119,36 @@ export function MapControls(p: ControlsProps) {
 
       <LayerPicker layer={p.layer} onChange={p.onLayerChange} />
 
-      <div className="group relative">
-        <span
-          role="tooltip"
-          className="pointer-events-none absolute right-full top-1/2 mr-3 -translate-y-1/2 whitespace-nowrap rounded-lg bg-ink px-3 py-1 text-xs font-medium text-surface opacity-0 transition-opacity group-focus-within:opacity-100 group-hover:opacity-100"
-        >
-          {p.follow ? 'Following vehicle' : 'Follow vehicle'}
-        </span>
-        <button
-          onClick={p.onToggleFollow}
-          aria-label={p.follow ? 'Following vehicle' : 'Follow vehicle'}
-          aria-pressed={p.follow}
-          className={`${CTRL} ${p.follow ? '!border-primary !bg-primary !text-on-primary hover:!bg-primary-hover' : ''}`}
-        >
-          <FontAwesomeIcon icon={faLocationCrosshairs} />
-        </button>
-      </div>
+      {p.onToggleFollow && (
+        <div className="group relative">
+          <span
+            role="tooltip"
+            className="pointer-events-none absolute right-full top-1/2 mr-3 -translate-y-1/2 whitespace-nowrap rounded-lg bg-ink px-3 py-1 text-xs font-medium text-surface opacity-0 transition-opacity group-focus-within:opacity-100 group-hover:opacity-100"
+          >
+            {p.follow ? 'Following vehicle' : 'Follow vehicle'}
+          </span>
+          <button
+            onClick={p.onToggleFollow}
+            aria-label={p.follow ? 'Following vehicle' : 'Follow vehicle'}
+            aria-pressed={p.follow}
+            className={`${CTRL} ${p.follow ? '!border-primary !bg-primary !text-on-primary hover:!bg-primary-hover' : ''}`}
+          >
+            <FontAwesomeIcon icon={faLocationCrosshairs} />
+          </button>
+        </div>
+      )}
 
-      <button
-        onClick={p.onTogglePath}
-        aria-label="Today's path"
-        aria-pressed={p.showPath}
-        title={p.showPath ? 'Hide today’s path' : 'Show today’s path'}
-        className={`${CTRL} ${p.showPath ? '!bg-primary-subtle !text-primary' : ''}`}
-      >
-        <FontAwesomeIcon icon={faRoute} />
-      </button>
+      {p.onTogglePath && (
+        <button
+          onClick={p.onTogglePath}
+          aria-label="Today's path"
+          aria-pressed={p.showPath}
+          title={p.showPath ? 'Hide today’s path' : 'Show today’s path'}
+          className={`${CTRL} ${p.showPath ? '!bg-primary-subtle !text-primary' : ''}`}
+        >
+          <FontAwesomeIcon icon={faRoute} />
+        </button>
+      )}
     </div>
   )
 }

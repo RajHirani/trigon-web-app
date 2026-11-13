@@ -6,6 +6,7 @@ import { queryClient } from '@/app/queryClient'
 import { MENU } from '@/config/menu'
 import DashboardPage from '@/features/dashboard/DashboardPage'
 import LiveTrackPage from '@/features/liveTrack/LiveTrackPage'
+import PlaybackPage from '@/features/playback/PlaybackPage'
 import VehicleDetailsPage from '@/features/vehicleDetails/VehicleDetailsPage'
 import ForgotPasswordPage from '@/features/auth/ForgotPasswordPage'
 import ResetPasswordPage from '@/features/auth/ResetPasswordPage'
@@ -32,6 +33,7 @@ export default function App() {
               <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/dashboard/:vehicleId" element={<VehicleDetailsPage />} />
               <Route path="/live/:vehicleId" element={<LiveTrackPage />} />
+              <Route path="/playback/:vehicleId" element={<PlaybackPage />} />
               {MENU.flatMap((g) => g.items)
                 .filter((i) => i.path !== '/dashboard')
                 .map((i) => (

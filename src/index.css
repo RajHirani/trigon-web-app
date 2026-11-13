@@ -48,6 +48,11 @@
   --teal: #0f766e; --teal-bg: #ccfbf1;
   --switch-off: #cbd5e1;
   --scrim: rgba(15, 27, 45, 0.45);
+  /* Common loader (ported from the mobile app's loader tokens). */
+  --loader-logo-from: #0a6fd8; --loader-logo-to: #14c4c6;
+  --loader-map: #e3ebf7; --loader-grid: #cfdbee; --loader-road: #ffffff;
+  --loader-vehicle: #ffffff; --loader-vehicle-line: #17335e; --loader-glass: #17335e;
+  --loader-headlight: #fff6d0; --loader-taillight: #ff4d4d; --loader-beam: #ffe49a;
 }
 :root[data-theme='dark'] {
   --bg-app: #111318;
@@ -91,6 +96,9 @@
   --teal: #5eead4; --teal-bg: #153a38;
   --switch-off: #4a4d55;
   --scrim: rgba(0, 0, 0, 0.6);
+  --loader-map: #0f2038; --loader-grid: #17304f; --loader-road: #1a3558;
+  --loader-vehicle: #f2f6fd; --loader-vehicle-line: #06101f; --loader-glass: #0d2442;
+  --loader-beam: #ffd978;
 }
 
 @theme inline {
@@ -142,3 +150,15 @@ html, body, #root { height: 100%; }
 body { margin: 0; background: var(--bg-app); color: var(--text-primary); font-family: 'Poppins', system-ui, sans-serif; }
 /* Live Track: darken the street tiles in dark mode (satellite stays as is). */
 .dark-tiles { filter: invert(1) hue-rotate(180deg) brightness(0.9) contrast(0.9); }
+
+/* Playback: Leaflet's popup frame is removed so the details card draws its own surface. */
+.pb-popup .leaflet-popup-content-wrapper { background: transparent; box-shadow: none; padding: 0; border-radius: 16px; }
+.pb-popup .leaflet-popup-content { margin: 0; width: auto !important; }
+.pb-popup .leaflet-popup-tip-container { display: none; }
+
+/* Common loader: the two halves of the logo slide together once on mount. */
+@keyframes tl-upper { from { transform: translateY(-16px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes tl-lower { from { transform: translateY(16px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.tl-upper { animation: tl-upper 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.tl-lower { animation: tl-lower 700ms cubic-bezier(0.2, 0.8, 0.2, 1) 120ms both; }
+@media (prefers-reduced-motion: reduce) { .tl-upper, .tl-lower { animation: none; } }

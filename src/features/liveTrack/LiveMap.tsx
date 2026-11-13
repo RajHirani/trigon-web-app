@@ -10,17 +10,17 @@ import { VEHICLE_ICON_SCALE, VEHICLE_ICONS, vehicleKindOf, type VehicleKind } fr
 // through the Google Maps Platform (Maps JavaScript API / Map Tiles API with a billing key); direct tile URLs
 // can be blocked or rate-limited without notice. TODO(prod): switch to the Map Tiles API (same layer types,
 // needs an API key) before launch. Dark mode re-colours the Map layer with a CSS filter (`.dark-tiles`).
-const GOOGLE_SUBDOMAINS = ['0', '1', '2', '3']
+export const GOOGLE_SUBDOMAINS = ['0', '1', '2', '3']
 const googleUrl = (lyrs: string) => `https://mt{s}.google.com/vt/lyrs=${lyrs}&hl=en&x={x}&y={y}&z={z}`
-const TILES: Record<MapLayer, { url: string }> = {
+export const TILES: Record<MapLayer, { url: string }> = {
   street: { url: googleUrl('m') },
   satellite: { url: googleUrl('s') },
   hybrid: { url: googleUrl('y') },
 }
-const ATTRIBUTION = 'Map data &copy; Google'
+export const ATTRIBUTION = 'Map data &copy; Google'
 
 /** The mobile app's top-down vehicle, tinted with the status colour and turned to its heading. */
-function markerIcon(status: VehicleStatus, kind: VehicleKind, heading: number) {
+export function markerIcon(status: VehicleStatus, kind: VehicleKind, heading: number) {
   const { svg, width, height } = VEHICLE_ICONS[kind]
   const w = Math.round(width * VEHICLE_ICON_SCALE)
   const h = Math.round(height * VEHICLE_ICON_SCALE)

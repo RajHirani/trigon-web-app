@@ -43,8 +43,8 @@ export function AppShell() {
       ),
     [role],
   )
-  // Live Track is a full-screen map: no header, no page padding. The sidebar is the same as on every page.
-  const fullScreen = pathname.startsWith('/live/')
+  // Live Track and Playback are full-screen maps: no header, no page padding. The sidebar is the same as on every page.
+  const fullScreen = pathname.startsWith('/live/') || pathname.startsWith('/playback/')
   const detailId = matchPath('/dashboard/:vehicleId', pathname)?.params.vehicleId
   const detailVehicle = useVehicle(detailId)
   const menuTitle = groups.flatMap((g) => g.items).find((i) => pathname.startsWith(i.path))?.label ?? 'TRIGON'

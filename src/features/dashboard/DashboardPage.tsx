@@ -57,10 +57,9 @@ export default function DashboardPage() {
     document.querySelector('main')?.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  // TODO: Play Back screen is not built yet.
   const actions = {
     onLiveTrack: (v: Vehicle) => navigate(`/live/${v.id}`),
-    onPlayBack: undefined,
+    onPlayBack: (v: Vehicle) => navigate(`/playback/${v.id}`),
     onViewMore: (v: Vehicle) => navigate(`/dashboard/${v.id}`),
   }
 

@@ -119,12 +119,13 @@ type Props = {
   collapsed: boolean
   onToggle: () => void
   onShare: () => void
+  onPlayBack: () => void
   onViewMore: () => void
   onDriveTo: () => void
 }
 
 /** Left panel. Figma: Live Track / Desktop / Light (Vehicle Panel) and "· Panel collapsed". */
-export function LivePanel({ vehicle, track, now, collapsed, onToggle, onShare, onViewMore, onDriveTo }: Props) {
+export function LivePanel({ vehicle, track, now, collapsed, onToggle, onShare, onPlayBack, onViewMore, onDriveTo }: Props) {
   const offline = vehicle.status === 'offline'
   const speed = track.speed
   const ago = formatAgoSeconds(track.updatedAt, now)
@@ -222,7 +223,7 @@ export function LivePanel({ vehicle, track, now, collapsed, onToggle, onShare, o
       </button>
 
       <div className="flex flex-wrap gap-2">
-        <button className={BTN} disabled title="Play Back is not built yet">
+        <button className={BTN} onClick={onPlayBack}>
           <FontAwesomeIcon icon={faClockRotateLeft} />
           Play Back
         </button>
