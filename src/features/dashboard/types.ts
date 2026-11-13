@@ -42,3 +42,20 @@ export type VehiclePage = {
   total: number
   pageSize: number
 }
+
+/** Today's figures for one vehicle (View More screen). Durations are whole minutes. */
+export type VehicleSummary = {
+  odometerKm: number
+  runningDistanceKm: number
+  runningMinutes: number
+  idleMinutes: number
+  stopMinutes: number
+  totalWorkingMinutes: number
+  fuelLitres: number | null
+  /** Start of the counting window ("counted from 12:00 AM"). ISO. */
+  countedFrom: string
+  address: string
+  lat: number
+  lng: number
+  locked: boolean
+}

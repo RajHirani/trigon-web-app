@@ -6,7 +6,7 @@ import { KpiRow } from './KpiRow'
 import { Pagination } from './Pagination'
 import { PAGE_SIZE_HINT, VEHICLE_GRID } from './layout'
 import { DeviceTypeFilter, SearchBox } from './Toolbar'
-import type { PlanFilter } from './types'
+import type { PlanFilter, Vehicle } from './types'
 import { useDeviceTypes, useVehicleKpis, useVehicles } from './useVehicles'
 import { VehicleCard } from './VehicleViews'
 
@@ -57,11 +57,11 @@ export default function DashboardPage() {
     document.querySelector('main')?.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  // TODO: Live Track, Play Back and View More screens are not built yet.
+  // TODO: Play Back screen is not built yet.
   const actions = {
     onLiveTrack: () => navigate('/fleet'),
     onPlayBack: undefined,
-    onViewMore: undefined,
+    onViewMore: (v: Vehicle) => navigate(`/dashboard/${v.id}`),
   }
 
   const data = vehicles.data

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Outlet, useLocation } from 'react-router-dom'
+import { matchPath, Outlet, useLocation } from 'react-router-dom'
 import { MENU } from '@/config/menu'
+import { useVehicle } from '@/features/vehicleDetails/useVehicleDetails'
 import { useSessionStore } from '@/store/sessionStore'
 import { Header } from './Header'
 import { Sidebar } from './Sidebar'
@@ -42,10 +43,17 @@ export function AppShell() {
       ),
     [role],
   )
-  const title = groups.flatMap((g) => g.items).find((i) => pathname.startsWith(i.path))?.label ?? 'TRIGON'
+  const detailId = matchPath('/dashboard/:vehicleId', pathname)?.params.vehicleId
+  const detailVehicle = useVehicle(detailId)
+  const menuTitle = groups.flatMap((g) => g.items).find((i) => pathname.startsWith(i.path))?.label ?? 'TRIGON'
+  const title = detailId ? 'Vehicle details' : menuTitle
 
   const now = useNow()
-  const subtitle = pathname.startsWith('/dashboard') ? `Live fleet status · ${formatNow(now)}` : undefined
+  const subtitle = detailId
+    ? `Dashboard › ${detailVehicle.data?.plate ?? '…'}`
+    : pathname.startsWith('/dashboard')
+      ? `Live fleet status · ${formatNow(now)}`
+      : undefined
 
   useEffect(() => {
     if (!drawer) return

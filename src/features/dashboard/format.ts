@@ -49,3 +49,20 @@ export function pageItems(page: number, pageCount: number): (number | 'gap')[] {
   })
   return out
 }
+
+/** Splits whole minutes into hours and minutes: 75 -> { h: 1, min: 15 }. */
+export function splitMinutes(total: number): { h: number; min: number } {
+  const t = Math.max(0, Math.round(total))
+  return { h: Math.floor(t / 60), min: t % 60 }
+}
+
+/** Distance with up to 3 decimals as in Figma: 74.355, 25.178. */
+export function formatKm(km: number): string {
+  return km.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 3 })
+}
+
+/** "12:00 AM, 20 Oct 2026" */
+export function formatDayStart(iso: string): string {
+  const d = new Date(iso)
+  return `12:00 AM, ${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`
+}

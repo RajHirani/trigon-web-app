@@ -5,6 +5,7 @@ import type {
   VehiclePage,
   VehicleQuery,
   VehicleStatus,
+  VehicleSummary,
 } from '@/features/dashboard/types'
 
 // Deterministic fake fleet (128 vehicles: 104 active, 14 expiring, 10 expired),
@@ -50,6 +51,9 @@ function build(index: number): Vehicle {
   }
 }
 
+/** Device lock state set from the UI (mock only). */
+const lockState = new Map<string, boolean>()
+
 const FLEET: Vehicle[] = Array.from({ length: 128 }, (_, i) => build(i))
 
 /** Dev switch: `?fleet=empty` in the URL simulates an account with no vehicles. */
@@ -79,5 +83,41 @@ export const mockVehicleBackend = {
 
   async deviceTypes(): Promise<string[]> {
     return [...DEVICE_TYPES]
+  },
+  async get(id: string): Promise<Vehicle | null> {
+    await delay(300)
+    return fleet().find((v) => v.id === id) ?? null
+  },
+
+  async summary(id: string): Promise<VehicleSummary> {
+    await delay(800)
+    const index = Number(id.replace('v', ''))
+    const v = FLEET[index]
+    if (!v) throw new Error('Vehicle not found')
+    const offline = v.status === 'offline'
+    const running = offline ? 0 : 1 + ((index * 17) % 200)
+    const idle = offline ? 0 : (index * 5) % 90
+    const midnight = new Date()
+    midnight.setHours(0, 0, 0, 0)
+    const elapsed = Math.floor((Date.now() - midnight.getTime()) / MINUTE)
+    return {
+      odometerKm: 74.355 + index * 137.25,
+      runningDistanceKm: offline ? 0 : 25.178 + index * 3.5,
+      runningMinutes: running,
+      idleMinutes: idle,
+      stopMinutes: Math.max(0, elapsed - running - idle),
+      totalWorkingMinutes: running + idle,
+      fuelLitres: v.fuelPercent === null ? null : Math.round((v.fuelPercent / 100) * 166),
+      countedFrom: midnight.toISOString(),
+      address: 'Ahmedabad–Rajkot Highway, Limbdi Taluka, Surendranagar, Gujarat 363423, India',
+      lat: 22.5726,
+      lng: 71.8153,
+      locked: lockState.get(id) ?? false,
+    }
+  },
+
+  async setLocked(id: string, locked: boolean): Promise<void> {
+    await delay(600)
+    lockState.set(id, locked)
   },
 }

@@ -55,6 +55,12 @@ Shell: see Foundation. Page content: `src/features/dashboard/` (`DashboardPage`,
 - New tokens in `index.css`: `gauge-track`, `selected`, `icon-tile`, `placeholder`, `control`, `skeleton*`, `ac`/`ac-bg`.
 - Open: Live Track button goes to `/fleet` (placeholder), Play Back and View More do nothing until those screens exist. The error state and the dropdown's hover/focus styling are not designed. Alert chips use FontAwesome stand-ins for the Figma icons (signal, battery). Loading shows no pager (page count is unknown until data arrives; Figma shows "Page 1 of 16"). The View More page (Figma 50:54073 and the lock dialog) is still to build. Mobile code reference: `features/dashboard`, `features/vehicleDetails`.
 
+### 3b. Dashboard: View More / Vehicle details (done, mock)
+- Figma 50:54073 (light), 50:59334 (dark), 50:56157 (loading), 50:55115 (lock dialog). Route `/dashboard/:vehicleId`; the card's View More button goes there. Header shows "Vehicle details" and "Dashboard › PLATE".
+- Code: `src/features/vehicleDetails/` (`VehicleDetailsPage`, `SummaryTiles` incl. skeleton + address card, `LockDialog`, `useVehicleDetails`). Service: `getVehicle`, `getVehicleSummary`, `setDeviceLocked` in `vehicleService.ts` (mock in `mockVehicleBackend.ts`; `apiBackend` stubs). New tokens: `violet*`, `teal*`, `switch-off`, `scrim`.
+- Behaviour: switching the lock on asks to confirm; switching it off unlocks directly (no Figma frame for that). The dialog's "Also deactivate everyone under …" checkbox exists in the Figma node but is not shown in the frame, so it is not built. "View on map" opens Google Maps (search link with the vehicle's lat,lng) in a new tab. Play Back is disabled until that screen exists.
+- Open: not-found and error states are not designed (generic copy); dark mode and the mobile Figma frames (50:61432, 50:57259) were not compared pixel by pixel; phone width checked once.
+
 ### 4. Fleet Tracking (todo) / 5. Live Track (todo) / 6. Playback (todo) / 7. Geofence (todo)
 ### 8. Users (todo) / 9. Devices (todo) / 10. Share Devices (todo)
 ### 11. Reports + Download Reports (todo) / 12. Notifications (todo)

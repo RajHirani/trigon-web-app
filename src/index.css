@@ -44,6 +44,10 @@
   --control-text: #334155;
   --skeleton: #e3eaf3; --skeleton-soft: #edf2f8; --skeleton-panel: #f1f5f9;
   --ac: #2563eb; --ac-bg: #dbeafe;
+  --violet: #7c3aed; --violet-bg: #f3ecfd;
+  --teal: #0f766e; --teal-bg: #ccfbf1;
+  --switch-off: #cbd5e1;
+  --scrim: rgba(15, 27, 45, 0.45);
 }
 :root[data-theme='dark'] {
   --bg-app: #111318;
@@ -83,6 +87,10 @@
   --control-text: #e2e2e9;
   --skeleton: #33353a; --skeleton-soft: #2a2c31; --skeleton-panel: #25272c;
   --ac: #90caf9; --ac-bg: #1e3a5f;
+  --violet: #b794f6; --violet-bg: #2e2548;
+  --teal: #5eead4; --teal-bg: #153a38;
+  --switch-off: #4a4d55;
+  --scrim: rgba(0, 0, 0, 0.6);
 }
 
 @theme inline {
@@ -124,6 +132,10 @@
   --color-control: var(--control-text);
   --color-skeleton: var(--skeleton); --color-skeleton-soft: var(--skeleton-soft); --color-skeleton-panel: var(--skeleton-panel);
   --color-ac: var(--ac); --color-ac-bg: var(--ac-bg);
+  --color-violet: var(--violet); --color-violet-bg: var(--violet-bg);
+  --color-teal: var(--teal); --color-teal-bg: var(--teal-bg);
+  --color-switch-off: var(--switch-off);
+  --color-scrim: var(--scrim);
 }
 
 html, body, #root { height: 100%; }
