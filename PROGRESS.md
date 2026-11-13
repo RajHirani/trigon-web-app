@@ -2,7 +2,7 @@
 
 Standalone React app (no monorepo). Designs: Figma file, page "New Design" (section ids in `../FIGMA-STRUCTURE.md`). The mobile app is `../trigon-mobile-app`; code is ported by copying.
 
-Last updated: 2026-11-13 (dashboard shell)
+Last updated: 2026-11-13 (dashboard content)
 
 ## Data mode: mock first, API later
 All data runs on mock data while `VITE_USE_MOCK=true` (set in every `.env.*` file). Mock code lives in `src/mocks/`. To integrate the API: implement the `apiBackend` side of each service, set `VITE_USE_MOCK=false`, remove the mocks of finished modules. Each module keeps the same service interface for both, so screens do not change.
@@ -46,8 +46,14 @@ Mock login: `admin@trigon.test`, `dealer@trigon.test`, `retailer@trigon.test`, `
 - Service: `src/services/auth/passwordResetService.ts`; mock `src/mocks/mockPasswordResetBackend.ts` (any email succeeds; `fail@trigon.test` shows the error banner). `apiBackend.requestReset` is a stub: endpoint to be confirmed.
 - Open: request-failure and resend-failure copy not designed; "Set new password" has no Figma frame yet.
 
-### 3. Dashboard (in progress: shell done, page content todo)
-Done: sidebar, header and layout (see Foundation). Todo: page content from Figma sections 05/06 (KPI row, toolbar, vehicle cards, list and table views, loading, empty, pagination) and the View More page. Mobile code: `features/dashboard`, `features/vehicleDetails`. Figma frame: "Dashboard / Desktop / Light" (node `10:19`; dark frames in section `13:2615`).
+### 3. Dashboard (page content done, mock; View More page todo)
+Shell: see Foundation. Page content: `src/features/dashboard/` (`DashboardPage`, `KpiRow`, `Toolbar`, `VehicleViews` = the card only, `VehicleParts`, `SpeedGauge`, `Pagination`, `DashboardStates` = empty + skeleton). Data: `services/vehicles/vehicleService.ts` (mock `src/mocks/mockVehicleBackend.ts`, 128 vehicles, 9 per page (the page size comes from the server in the API step); `apiBackend` is a stub until the endpoints exist), hooks in `useVehicles.ts`.
+- Card view only (list and table views from Figma 38:2 / 38:933 were dropped by request). Matches Figma frames 10:19 (cards), 38:1864 (loading), 38:2795 / 38:3726 (empty), 12:1283 (device type); dark checked, phone width checked.
+- Behaviour: KPI tile filters by plan; search runs on Enter or when emptied; device-type dropdown has its own search; any filter resets to page 1. Add `?fleet=empty` to the URL (mock mode) to see the "No vehicles yet" state.
+- Loader: `VehiclesSkeleton` in `DashboardStates.tsx` follows Figma 38:1864 (Skeleton Card 396 x 420, bar sizes and tones). KPI tiles show a value skeleton and an empty track; the counter reads "Loading vehicles…"; a disabled pager is drawn from the fleet size once the KPIs arrive (page size assumed from `PAGE_SIZE_HINT` until the data does). Pulse is skipped for reduced-motion users.
+- Responsive: the card grid auto-fills columns at a 360px minimum (`layout.ts`; 3 per row on a ~1500px screen; a forced 4-per-row layout was tried and rolled back by request). The card adapts to its own width with container queries (compact below 380px: no button icons, smaller gauge) so the three buttons never leave the card. KPI tiles are one swipeable row below `md`.
+- New tokens in `index.css`: `gauge-track`, `selected`, `icon-tile`, `placeholder`, `control`, `skeleton*`, `ac`/`ac-bg`.
+- Open: Live Track button goes to `/fleet` (placeholder), Play Back and View More do nothing until those screens exist. The error state and the dropdown's hover/focus styling are not designed. Alert chips use FontAwesome stand-ins for the Figma icons (signal, battery). Loading shows no pager (page count is unknown until data arrives; Figma shows "Page 1 of 16"). The View More page (Figma 50:54073 and the lock dialog) is still to build. Mobile code reference: `features/dashboard`, `features/vehicleDetails`.
 
 ### 4. Fleet Tracking (todo) / 5. Live Track (todo) / 6. Playback (todo) / 7. Geofence (todo)
 ### 8. Users (todo) / 9. Devices (todo) / 10. Share Devices (todo)

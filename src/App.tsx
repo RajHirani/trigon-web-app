@@ -4,6 +4,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { Placeholder } from '@/app/Placeholder'
 import { queryClient } from '@/app/queryClient'
 import { MENU } from '@/config/menu'
+import DashboardPage from '@/features/dashboard/DashboardPage'
 import ForgotPasswordPage from '@/features/auth/ForgotPasswordPage'
 import ResetPasswordPage from '@/features/auth/ResetPasswordPage'
 import { RequireAuth } from '@/features/auth/RequireAuth'
@@ -26,9 +27,12 @@ export default function App() {
           <Route element={<RequireAuth />}>
             <Route element={<AppShell />}>
               <Route index element={<Navigate to="/dashboard" replace />} />
-              {MENU.flatMap((g) => g.items).map((i) => (
-                <Route key={i.path} path={i.path} element={<Placeholder title={i.label} />} />
-              ))}
+              <Route path="/dashboard" element={<DashboardPage />} />
+              {MENU.flatMap((g) => g.items)
+                .filter((i) => i.path !== '/dashboard')
+                .map((i) => (
+                  <Route key={i.path} path={i.path} element={<Placeholder title={i.label} />} />
+                ))}
             </Route>
           </Route>
           <Route path="*" element={<Navigate to="/" replace />} />
