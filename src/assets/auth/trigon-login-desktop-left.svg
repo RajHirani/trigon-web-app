@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="1080" viewBox="0 0 960 1080" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="960" y2="1080" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1273d6"/>
+      <stop offset="0.55" stop-color="#0a66c2"/>
+      <stop offset="1" stop-color="#064a94"/>
+    </linearGradient>
+    <radialGradient id="hub" cx="480" cy="470" r="420" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5fb0ff" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#5fb0ff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="trail" x1="0" y1="930" x2="840" y2="600" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#ffffff"/>
+    </linearGradient>
+    <filter id="blur6" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter>
+    <filter id="blur14" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="14"/></filter>
+    <filter id="shadow" x="-20%" y="-30%" width="140%" height="180%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#021f44" flood-opacity="0.35"/></filter>
+  </defs>
+
+  <rect width="960" height="1080" fill="url(#bg)"/>
+  <rect width="960" height="1080" fill="url(#hub)"/>
+
+  <!-- map grid -->
+  <g stroke="#ffffff" stroke-opacity="0.06" stroke-width="1">
+    <path d="M96 0V1080M192 0V1080M288 0V1080M384 0V1080M480 0V1080M576 0V1080M672 0V1080M768 0V1080M864 0V1080"/>
+    <path d="M0 96H960M0 192H960M0 288H960M0 384H960M0 480H960M0 576H960M0 672H960M0 768H960M0 864H960M0 960H960M0 1056H960"/>
+  </g>
+
+  <!-- logo triangle watermark -->
+  <g opacity="0.07" fill="#ffffff">
+    <path d="M150 560L360 980H-60Z"/>
+  </g>
+
+  <!-- signal rings around the logo hub -->
+  <g stroke="#ffffff" fill="none">
+    <circle cx="480" cy="470" r="250" stroke-opacity="0.16"/>
+    <circle cx="480" cy="470" r="370" stroke-opacity="0.11"/>
+    <circle cx="480" cy="470" r="490" stroke-opacity="0.08"/>
+    <circle cx="480" cy="470" r="610" stroke-opacity="0.05"/>
+  </g>
+
+  <!-- secondary roads -->
+  <g stroke="#ffffff" stroke-opacity="0.10" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M-20 640C120 640 160 700 260 700S400 640 520 660"/>
+    <path d="M980 400C900 400 880 360 820 330S720 300 690 250"/>
+    <path d="M300 -20C300 80 340 130 420 150"/>
+    <path d="M980 800C900 800 880 840 820 880"/>
+  </g>
+
+  <!-- route 2 (top right) -->
+  <path d="M980 150C800 150 740 190 680 250S620 330 620 335" stroke="#ffffff" stroke-opacity="0.38" stroke-width="4" stroke-linecap="round"/>
+  <!-- route 3 (top left) -->
+  <path d="M110 -20C110 120 120 220 190 280S290 330 300 335" stroke="#ffffff" stroke-opacity="0.38" stroke-width="4" stroke-linecap="round"/>
+  <!-- route 4 (bottom right) -->
+  <path d="M980 990C820 990 740 960 700 900S640 860 560 860" stroke="#ffffff" stroke-opacity="0.30" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- main route: glow + line + dotted lead-in -->
+  <path d="M-20 930C200 930 260 820 420 820S640 800 740 740S840 660 840 600" stroke="#8fd0ff" stroke-width="14" stroke-linecap="round" opacity="0.55" filter="url(#blur6)"/>
+  <path d="M-20 930C200 930 260 820 420 820S640 800 740 740S840 660 840 600" stroke="url(#trail)" stroke-width="5" stroke-linecap="round"/>
+  <path d="M-20 950C200 950 260 840 420 840" stroke="#ffffff" stroke-opacity="0.25" stroke-width="2" stroke-dasharray="2 9" stroke-linecap="round"/>
+
+  <!-- geofence around destination -->
+  <g>
+    <path d="M840 490L935 545V655L840 710L745 655V545Z" fill="#ffffff" fill-opacity="0.08" stroke="#ffffff" stroke-opacity="0.55" stroke-width="2" stroke-dasharray="8 8" stroke-linejoin="round"/>
+  </g>
+
+  <!-- destination pin -->
+  <circle cx="840" cy="600" r="34" fill="#ffffff" fill-opacity="0.12"/>
+  <circle cx="840" cy="600" r="20" fill="#ffffff" fill-opacity="0.22"/>
+  <circle cx="840" cy="600" r="10" fill="#ffffff"/>
+  <circle cx="840" cy="600" r="4" fill="#0a66c2"/>
+
+  <!-- vehicle marker on main route -->
+  <circle cx="420" cy="820" r="48" fill="#ffffff" fill-opacity="0.10"/>
+  <circle cx="420" cy="820" r="30" fill="#ffffff" fill-opacity="0.18"/>
+  <circle cx="420" cy="820" r="13" fill="#ffffff"/>
+  <path d="M420 811L429 828H411Z" fill="#0a66c2"/>
+
+  <!-- route end nodes -->
+  <g fill="#ffffff">
+    <circle cx="620" cy="335" r="16" fill-opacity="0.22"/><circle cx="620" cy="335" r="7"/>
+    <circle cx="300" cy="335" r="16" fill-opacity="0.22"/><circle cx="300" cy="335" r="7"/>
+    <circle cx="560" cy="860" r="16" fill-opacity="0.22"/><circle cx="560" cy="860" r="7"/>
+  </g>
+
+  <!-- glass card: live vehicle -->
+  <g filter="url(#shadow)">
+    <rect x="452" y="690" width="260" height="88" rx="18" fill="#ffffff" fill-opacity="0.14" stroke="#ffffff" stroke-opacity="0.35"/>
+  </g>
+  <circle cx="486" cy="734" r="6" fill="#4ade80"/>
+  <text x="502" y="728" font-family="Poppins, Segoe UI, Arial, sans-serif" font-weight="600" font-size="16" fill="#ffffff">Live vehicle</text>
+  <text x="502" y="752" font-family="Poppins, Segoe UI, Arial, sans-serif" font-weight="400" font-size="13" fill="#d6e8fb">Moving · 57 km/h · Live</text>
+  <rect x="476" y="758" width="212" height="4" rx="2" fill="#ffffff" fill-opacity="0.2"/>
+  <rect x="476" y="758" width="128" height="4" rx="2" fill="#ffffff"/>
+
+  <!-- glass card: geofence alert -->
+  <g filter="url(#shadow)">
+    <rect x="64" y="130" width="300" height="88" rx="18" fill="#ffffff" fill-opacity="0.14" stroke="#ffffff" stroke-opacity="0.35"/>
+  </g>
+  <circle cx="98" cy="174" r="6" fill="#fbbf24"/>
+  <text x="114" y="168" font-family="Poppins, Segoe UI, Arial, sans-serif" font-weight="600" font-size="16" fill="#ffffff">Geofence alert</text>
+  <text x="114" y="192" font-family="Poppins, Segoe UI, Arial, sans-serif" font-weight="400" font-size="13" fill="#d6e8fb">A vehicle left Ahmedabad Depot</text>
+
+  <!-- glass card: fuel -->
+  <g filter="url(#shadow)">
+    <rect x="620" y="900" width="270" height="88" rx="18" fill="#ffffff" fill-opacity="0.14" stroke="#ffffff" stroke-opacity="0.35"/>
+  </g>
+  <text x="646" y="934" font-family="Poppins, Segoe UI, Arial, sans-serif" font-weight="600" font-size="16" fill="#ffffff">Fuel level</text>
+  <text x="846" y="934" text-anchor="end" font-family="Poppins, Segoe UI, Arial, sans-serif" font-weight="600" font-size="16" fill="#ffffff">62%</text>
+  <rect x="646" y="948" width="218" height="8" rx="4" fill="#ffffff" fill-opacity="0.2"/>
+  <rect x="646" y="948" width="135" height="8" rx="4" fill="#ffffff"/>
+
+  <!-- stat chip -->
+  <g filter="url(#shadow)">
+    <rect x="700" y="60" width="196" height="44" rx="22" fill="#ffffff" fill-opacity="0.14" stroke="#ffffff" stroke-opacity="0.35"/>
+  </g>
+  <circle cx="728" cy="82" r="5" fill="#4ade80"/>
+  <text x="744" y="87" font-family="Poppins, Segoe UI, Arial, sans-serif" font-weight="500" font-size="14" fill="#ffffff">128 vehicles live</text>
+</svg>
