@@ -4,6 +4,8 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { Placeholder } from '@/app/Placeholder'
 import { queryClient } from '@/app/queryClient'
 import { MENU } from '@/config/menu'
+import ForgotPasswordPage from '@/features/auth/ForgotPasswordPage'
+import ResetPasswordPage from '@/features/auth/ResetPasswordPage'
 import { RequireAuth } from '@/features/auth/RequireAuth'
 import SignInPage from '@/features/auth/SignInPage'
 import { AppShell } from '@/features/shell/AppShell'
@@ -19,7 +21,8 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<SignInPage />} />
-          <Route path="/forgot-password" element={<Placeholder title="Forgot password" />} />
+          <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+          <Route path="/reset-password" element={<ResetPasswordPage />} />
           <Route element={<RequireAuth />}>
             <Route element={<AppShell />}>
               <Route index element={<Navigate to="/dashboard" replace />} />

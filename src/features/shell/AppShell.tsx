@@ -1,77 +1,84 @@
-import { faBars, faMoon, faRightFromBracket, faSun } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useState } from 'react'
-import { NavLink, Outlet } from 'react-router-dom'
+import { useEffect, useMemo, useState } from 'react'
+import { Outlet, useLocation } from 'react-router-dom'
 import { MENU } from '@/config/menu'
-import { signOut } from '@/services/auth/authService'
-import { useThemeStore } from '@/store/themeStore'
+import { useSessionStore } from '@/store/sessionStore'
+import { Header } from './Header'
+import { Sidebar } from './Sidebar'
 
-function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
-  return (
-    <aside className="flex h-full w-60 flex-col bg-sidebar text-sidebar-text">
-      <div className="px-5 py-5 text-lg font-semibold text-sidebar-active">TRIGON</div>
-      <nav className="flex-1 overflow-y-auto px-2">
-        {MENU.map((g) => (
-          <div key={g.title} className="mb-3">
-            <div className="px-3 pb-1 text-[10px] font-medium uppercase tracking-wider text-sidebar-caption">
-              {g.title}
-            </div>
-            {g.items.map((i) => (
-              <NavLink
-                key={i.path}
-                to={i.path}
-                onClick={onNavigate}
-                className={({ isActive }) =>
-                  `flex items-center gap-3 rounded-lg px-3 py-2 text-sm ${
-                    isActive ? 'bg-sidebar-item text-sidebar-active' : 'hover:bg-sidebar-item/60'
-                  }`
-                }
-              >
-                <FontAwesomeIcon icon={i.icon} className="w-4" />
-                {i.label}
-              </NavLink>
-            ))}
-          </div>
-        ))}
-      </nav>
-      <button onClick={() => void signOut()} className="m-2 flex items-center gap-3 rounded-lg px-3 py-2 text-sm hover:bg-sidebar-item/60">
-        <FontAwesomeIcon icon={faRightFromBracket} className="w-4" />
-        Logout
-      </button>
-    </aside>
-  )
+const COLLAPSE_KEY = 'trigon.sidebar.collapsed'
+
+function loadCollapsed() {
+  try {
+    return localStorage.getItem(COLLAPSE_KEY) === '1'
+  } catch {
+    return false
+  }
 }
 
+/** Current time, refreshed every 30s (e.g. "20 Oct 2026, 1:17 PM"). */
+function useNow() {
+  const [now, setNow] = useState(() => new Date())
+  useEffect(() => {
+    const id = setInterval(() => setNow(new Date()), 30_000)
+    return () => clearInterval(id)
+  }, [])
+  return now
+}
+
+const formatNow = (d: Date) =>
+  `${d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}, ${d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}`
+
 export function AppShell() {
-  const [open, setOpen] = useState(false)
-  const { mode, setMode } = useThemeStore()
+  const [drawer, setDrawer] = useState(false)
+  const [collapsed, setCollapsed] = useState(loadCollapsed)
+  const role = useSessionStore((s) => s.user?.role)
+  const { pathname } = useLocation()
+
+  // Hide items the signed-in role cannot use; drop groups left empty.
+  const groups = useMemo(
+    () =>
+      MENU.map((g) => ({ ...g, items: g.items.filter((i) => !i.roles || (role && i.roles.includes(role))) })).filter(
+        (g) => g.items.length > 0,
+      ),
+    [role],
+  )
+  const title = groups.flatMap((g) => g.items).find((i) => pathname.startsWith(i.path))?.label ?? 'TRIGON'
+
+  const now = useNow()
+  const subtitle = pathname.startsWith('/dashboard') ? `Live fleet status · ${formatNow(now)}` : undefined
+
+  useEffect(() => {
+    if (!drawer) return
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setDrawer(false)
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [drawer])
+
+  const toggleCollapsed = () =>
+    setCollapsed((c) => {
+      try {
+        localStorage.setItem(COLLAPSE_KEY, c ? '0' : '1')
+      } catch {
+        /* ignore */
+      }
+      return !c
+    })
+
   return (
-    <div className="flex h-full">
+    <div className="flex h-full bg-app text-ink">
       <div className="hidden lg:block">
-        <Sidebar />
+        <Sidebar groups={groups} collapsed={collapsed} onToggleCollapse={toggleCollapsed} />
       </div>
-      {open && (
-        <div className="fixed inset-0 z-40 lg:hidden" onClick={() => setOpen(false)}>
-          <div className="absolute inset-0 bg-black/30" />
+      {drawer && (
+        <div className="fixed inset-0 z-40 lg:hidden" onClick={() => setDrawer(false)}>
+          <div className="absolute inset-0 bg-black/40" />
           <div className="relative h-full w-60" onClick={(e) => e.stopPropagation()}>
-            <Sidebar onNavigate={() => setOpen(false)} />
+            <Sidebar groups={groups} onNavigate={() => setDrawer(false)} />
           </div>
         </div>
       )}
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="flex items-center justify-between gap-3 border-b border-line bg-surface px-4 py-3 lg:px-6">
-          <button className="lg:hidden" aria-label="Open menu" onClick={() => setOpen(true)}>
-            <FontAwesomeIcon icon={faBars} />
-          </button>
-          <div className="flex-1" />
-          <button
-            aria-label="Toggle theme"
-            onClick={() => setMode(mode === 'dark' ? 'light' : 'dark')}
-            className="rounded-lg border border-line px-3 py-1.5 text-sm text-ink-2"
-          >
-            <FontAwesomeIcon icon={mode === 'dark' ? faSun : faMoon} />
-          </button>
-        </header>
+        <Header title={title} subtitle={subtitle} onOpenMenu={() => setDrawer(true)} />
         <main className="min-h-0 flex-1 overflow-y-auto p-4 lg:p-6">
           <Outlet />
         </main>

@@ -2,7 +2,7 @@
 
 Standalone React app (no monorepo). Designs: Figma file, page "New Design" (section ids in `../FIGMA-STRUCTURE.md`). The mobile app is `../trigon-mobile-app`; code is ported by copying.
 
-Last updated: 2026-11-13
+Last updated: 2026-11-13 (dashboard shell)
 
 ## Data mode: mock first, API later
 All data runs on mock data while `VITE_USE_MOCK=true` (set in every `.env.*` file). Mock code lives in `src/mocks/`. To integrate the API: implement the `apiBackend` side of each service, set `VITE_USE_MOCK=false`, remove the mocks of finished modules. Each module keeps the same service interface for both, so screens do not change.
@@ -24,7 +24,12 @@ Mock login: `admin@trigon.test`, `dealer@trigon.test`, `retailer@trigon.test`, `
 - Vite + React 19 + TS, Tailwind v4, alias `@` = `src`.
 - Design tokens as CSS variables in `src/index.css` (light + `data-theme="dark"`), exposed as Tailwind colours (`bg-surface`, `text-ink-2`, `border-line`, ...). Source: mobile `theme/tokens.ts`.
 - Libraries: react-router-dom, React Query, zustand, axios, zod, react-hook-form, mqtt, FontAwesome, Leaflet (+ react-leaflet), Poppins.
-- App shell `src/features/shell/AppShell.tsx`: sidebar (drawer below `lg`), top bar, theme toggle (persisted), logout. Menu in `src/config/menu.ts`. All routes besides Sign in are placeholders.
+- App shell `src/features/shell/`: `AppShell.tsx` (layout, drawer, page title and role-filtered menu), `Sidebar.tsx`, `Header.tsx`, `ThemeSwitcher.tsx`. Menu in `src/config/menu.ts`. All routes besides Sign in are placeholders.
+  - Sidebar: 240px, 44px items, icon-only rail at 72px (collapse state saved in `trigon.sidebar.collapsed`), drawer below `lg` (closes on Esc, backdrop, navigation). Items are hidden when the user's role is not in the item's `roles`.
+  - Header: matches Figma "Dashboard / Desktop / Light" and the dark frame: 72px, title + subtitle (the Dashboard subtitle is a live clock, "Live fleet status · date, time"), Light/Dark pill, user pill (avatar, name, role, chevron). No search box and no notification bell (removed by request; the Notifications sidebar item stays). On phones the toggle is icon-only and the role/chevron hide.
+  - Theme: `src/store/themeStore.ts` keeps `preference` (`light` | `dark` | `system`) and `mode` (resolved). First load follows the OS; picking Light or Dark in the header saves the choice (`trigon.theme`). Toggle colours are the `toggle-*` tokens in `index.css`.
+  - Favicon is the TRIGON mark (`public/favicon.svg`).
+  - Open: the user pill's chevron has no dropdown yet (Logout is in the sidebar); the rest of the sidebar has not been compared to Figma beyond width and item height.
 - Maps: Leaflet + CARTO tiles (Google Maps JS needs a billing card).
 
 ## Modules
@@ -35,11 +40,14 @@ Mock login: `admin@trigon.test`, `dealer@trigon.test`, `retailer@trigon.test`, `
 - Services: `src/services/auth/*`, `src/store/{sessionStore,roleStore}.ts`. Mock backend: `src/mocks/mockAuthBackend.ts` (+ test).
 - Open for the API step: OAuth client id `trigon-web` registered? device_platform `web` accepted? Tokens are in localStorage (httpOnly refresh cookie would be safer, needs backend).
 
-### 2. Auth: Forgot password, Check your email, Set new password (todo)
-Route `/forgot-password` is a placeholder. Mobile has `ForgotPasswordScreen`, `CheckEmailScreen`.
+### 2. Auth: Forgot password, Check your email, Set new password (done, mock)
+- Set new password: Figma "Set new password" frames. `ResetPasswordPage.tsx` on `/reset-password?token=...`, schema `resetPasswordSchema` (8+ chars, number, symbol, confirm must match). On success goes to `/login` with a "Password updated" notice. Mock: token `expired` (or no token) shows the expired-link state with a "Request a new link" link; any other token works. `resetPassword` in `passwordResetService.ts`, API side is a stub. Open: expired-link, failure and success copy are placeholders (not designed); the real reset-link URL format comes from the backend email.
+- Figma "Forgot password" and "Check your email" frames (desktop/mobile, light/dark). `src/features/auth/ForgotPasswordPage.tsx` shows both steps on `/forgot-password` (form, then "Check your email" with Resend link). Schema: `forgotPasswordSchema`.
+- Service: `src/services/auth/passwordResetService.ts`; mock `src/mocks/mockPasswordResetBackend.ts` (any email succeeds; `fail@trigon.test` shows the error banner). `apiBackend.requestReset` is a stub: endpoint to be confirmed.
+- Open: request-failure and resend-failure copy not designed; "Set new password" has no Figma frame yet.
 
-### 3. Dashboard (todo)
-Figma sections 05/06 (list, table, cards, loading, empty), View More page. Mobile code: `features/dashboard`, `features/vehicleDetails`.
+### 3. Dashboard (in progress: shell done, page content todo)
+Done: sidebar, header and layout (see Foundation). Todo: page content from Figma sections 05/06 (KPI row, toolbar, vehicle cards, list and table views, loading, empty, pagination) and the View More page. Mobile code: `features/dashboard`, `features/vehicleDetails`. Figma frame: "Dashboard / Desktop / Light" (node `10:19`; dark frames in section `13:2615`).
 
 ### 4. Fleet Tracking (todo) / 5. Live Track (todo) / 6. Playback (todo) / 7. Geofence (todo)
 ### 8. Users (todo) / 9. Devices (todo) / 10. Share Devices (todo)
@@ -50,3 +58,4 @@ Figma sections 05/06 (list, table, cards, loading, empty), View More page. Mobil
 - 2026-11-13: standalone app, no monorepo.
 - 2026-11-13: Tailwind v4 driven by token CSS variables.
 - 2026-11-13: Mock data first; API integration later behind the same service interfaces.
+- 2026-11-13: Header follows Figma (Light/Dark pill, no search, no bell); "System" theme is not in the UI but is still the first-load default.

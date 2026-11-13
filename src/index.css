@@ -30,6 +30,9 @@
   --error-border: #fecdca;
   --error-text: #b42318;
   --auth-panel: #0a66c2;
+  --toggle-track: #edf2f8;
+  --toggle-active: #ffffff;
+  --toggle-active-icon: #f59e0b;
   --moving: #16a34a; --moving-fg: #15803d; --moving-bg: #dcfce7;
   --idle: #f59e0b; --idle-fg: #b45309; --idle-bg: #fef3c7;
   --stopped: #dc2626; --stopped-fg: #b91c1c; --stopped-bg: #fee2e2;
@@ -59,6 +62,9 @@
   --error-border: #7a2b26;
   --error-text: #ffb4ab;
   --auth-panel: #0b1f3d;
+  --toggle-track: #111318;
+  --toggle-active: #33353a;
+  --toggle-active-icon: #90caf9;
   --moving: #66bb6a; --moving-fg: #81c784; --moving-bg: #1f3a28;
   --idle: #ffca28; --idle-fg: #ffd54f; --idle-bg: #3b3014;
   --stopped: #e57373; --stopped-fg: #ef9a9a; --stopped-bg: #4a2322;
@@ -85,6 +91,9 @@
   --color-error-border: var(--error-border);
   --color-error-text: var(--error-text);
   --color-auth-panel: var(--auth-panel);
+  --color-toggle-track: var(--toggle-track);
+  --color-toggle-active: var(--toggle-active);
+  --color-toggle-active-icon: var(--toggle-active-icon);
   --color-sidebar: var(--sidebar-bg);
   --color-sidebar-text: var(--sidebar-text);
   --color-sidebar-active: var(--sidebar-text-active);

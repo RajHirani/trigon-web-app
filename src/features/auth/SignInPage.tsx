@@ -36,7 +36,10 @@ const fieldClass = (invalid: boolean) =>
 export default function SignInPage() {
   const user = useSessionStore((s) => s.user)
   const navigate = useNavigate()
-  const from = (useLocation().state as { from?: string } | null)?.from ?? '/dashboard'
+  const locationState = useLocation().state as { from?: string; passwordReset?: boolean } | null
+  const from = locationState?.from ?? '/dashboard'
+  // Set by the reset-password screen; the success message is not designed yet (Figma).
+  const passwordReset = locationState?.passwordReset === true
   const [showPassword, setShowPassword] = useState(false)
   const [submitError, setSubmitError] = useState<string | null>(null)
   // Red borders only when the credentials were the problem.
@@ -75,6 +78,11 @@ export default function SignInPage() {
       <p className="mt-0.5 text-sm text-ink-3">Sign in to your TRIGON account</p>
 
       <form onSubmit={submit} noValidate className="mt-5">
+        {passwordReset && !submitError && (
+          <div role="status" className="mb-5 rounded-lg border border-primary/30 bg-primary-subtle px-4 py-3 text-sm font-medium text-primary">
+            Password updated. Sign in with your new password.
+          </div>
+        )}
         {submitError && (
           <div role="alert" className="mb-5 rounded-lg border border-error-border bg-error-bg px-4 py-3 text-sm font-medium text-error-text">
             {submitError}
