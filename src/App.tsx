@@ -5,6 +5,7 @@ import { Placeholder } from '@/app/Placeholder'
 import { queryClient } from '@/app/queryClient'
 import { MENU } from '@/config/menu'
 import DashboardPage from '@/features/dashboard/DashboardPage'
+import LiveTrackPage from '@/features/liveTrack/LiveTrackPage'
 import VehicleDetailsPage from '@/features/vehicleDetails/VehicleDetailsPage'
 import ForgotPasswordPage from '@/features/auth/ForgotPasswordPage'
 import ResetPasswordPage from '@/features/auth/ResetPasswordPage'
@@ -30,6 +31,7 @@ export default function App() {
               <Route index element={<Navigate to="/dashboard" replace />} />
               <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/dashboard/:vehicleId" element={<VehicleDetailsPage />} />
+              <Route path="/live/:vehicleId" element={<LiveTrackPage />} />
               {MENU.flatMap((g) => g.items)
                 .filter((i) => i.path !== '/dashboard')
                 .map((i) => (

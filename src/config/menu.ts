@@ -11,7 +11,14 @@ import {
   faUsers,
 } from '@fortawesome/free-solid-svg-icons'
 
-export type MenuItem = { path: string; label: string; icon: IconDefinition; roles?: readonly string[] }
+export type MenuItem = {
+  path: string
+  label: string
+  icon: IconDefinition
+  roles?: readonly string[]
+  /** Other route prefixes that keep this item highlighted (Live Track is opened from the Dashboard, so Dashboard stays lit; it is separate from Fleet Tracking). */
+  alsoActiveFor?: readonly string[]
+}
 export type MenuGroup = { title: string; items: readonly MenuItem[] }
 
 // Same groups and roles as the mobile menu (trigon-mobile-app/src/navigation/menu.ts) and the Figma sidebar.
@@ -19,7 +26,7 @@ export const MENU: readonly MenuGroup[] = [
   {
     title: 'Monitor',
     items: [
-      { path: '/dashboard', label: 'Dashboard', icon: faGauge },
+      { path: '/dashboard', label: 'Dashboard', icon: faGauge, alsoActiveFor: ['/live'] },
       { path: '/fleet', label: 'Fleet Tracking', icon: faRoute },
       { path: '/geofence', label: 'Geofence', icon: faDrawPolygon },
     ],

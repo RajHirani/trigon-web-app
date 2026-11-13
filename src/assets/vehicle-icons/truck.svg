@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="44" height="104" viewBox="0 0 44 104" fill="none">
+  <rect x="14" y="30" width="16" height="12" fill="#1E293B"/>
+  <rect x="3" y="38" width="38" height="64" rx="5" fill="currentColor" stroke="#FFFFFF" stroke-width="1.4"/>
+  <rect x="7" y="46" width="30" height="1.6" rx="0.8" fill="#FFFFFF" opacity="0.35"/>
+  <rect x="7" y="54" width="30" height="1.6" rx="0.8" fill="#FFFFFF" opacity="0.35"/>
+  <rect x="7" y="62" width="30" height="1.6" rx="0.8" fill="#FFFFFF" opacity="0.35"/>
+  <rect x="7" y="70" width="30" height="1.6" rx="0.8" fill="#FFFFFF" opacity="0.35"/>
+  <rect x="7" y="78" width="30" height="1.6" rx="0.8" fill="#FFFFFF" opacity="0.35"/>
+  <rect x="7" y="86" width="30" height="1.6" rx="0.8" fill="#FFFFFF" opacity="0.35"/>
+  <rect x="7" y="94" width="30" height="1.6" rx="0.8" fill="#FFFFFF" opacity="0.35"/>
+  <rect x="6" y="99" width="6" height="2.5" rx="1.2" fill="#DC2626"/>
+  <rect x="32" y="99" width="6" height="2.5" rx="1.2" fill="#DC2626"/>
+  <rect x="5" y="2" width="34" height="32" rx="10" fill="currentColor" stroke="#FFFFFF" stroke-width="1.4"/>
+  <rect x="0" y="12" width="5" height="8" rx="2" fill="currentColor" stroke="#FFFFFF" stroke-width="1.4"/>
+  <rect x="39" y="12" width="5" height="8" rx="2" fill="currentColor" stroke="#FFFFFF" stroke-width="1.4"/>
+  <path d="M9 10 Q22 6 35 10 L34 19 Q22 17 10 19 Z" fill="#1E293B"/>
+  <rect x="9" y="22" width="26" height="8" rx="3" fill="#0F1B2D" fill-opacity="0.3"/>
+  <rect x="8" y="3" width="7" height="3" rx="1.5" fill="#FFFFFF"/>
+  <rect x="29" y="3" width="7" height="3" rx="1.5" fill="#FFFFFF"/>
+</svg>

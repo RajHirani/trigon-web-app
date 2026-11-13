@@ -75,7 +75,7 @@ export default function VehicleDetailsPage() {
               </div>
             </div>
             <div className="flex gap-2">
-              <button className={`${BTN} bg-primary text-on-primary hover:bg-primary-hover`} onClick={() => navigate('/fleet')}>
+              <button className={`${BTN} bg-primary text-on-primary hover:bg-primary-hover`} onClick={() => navigate(`/live/${v.id}`)}>
                 <FontAwesomeIcon icon={faLocationCrosshairs} />
                 Live Track
               </button>

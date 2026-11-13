@@ -43,6 +43,8 @@ export function AppShell() {
       ),
     [role],
   )
+  // Live Track is a full-screen map: no header, no page padding. The sidebar is the same as on every page.
+  const fullScreen = pathname.startsWith('/live/')
   const detailId = matchPath('/dashboard/:vehicleId', pathname)?.params.vehicleId
   const detailVehicle = useVehicle(detailId)
   const menuTitle = groups.flatMap((g) => g.items).find((i) => pathname.startsWith(i.path))?.label ?? 'TRIGON'
@@ -86,8 +88,8 @@ export function AppShell() {
         </div>
       )}
       <div className="flex min-w-0 flex-1 flex-col">
-        <Header title={title} subtitle={subtitle} onOpenMenu={() => setDrawer(true)} />
-        <main className="min-h-0 flex-1 overflow-y-auto p-4 lg:p-6">
+        {!fullScreen && <Header title={title} subtitle={subtitle} onOpenMenu={() => setDrawer(true)} />}
+        <main className={fullScreen ? 'min-h-0 flex-1 overflow-hidden' : 'min-h-0 flex-1 overflow-y-auto p-4 lg:p-6'}>
           <Outlet />
         </main>
       </div>

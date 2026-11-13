@@ -59,7 +59,7 @@ export default function DashboardPage() {
 
   // TODO: Play Back screen is not built yet.
   const actions = {
-    onLiveTrack: () => navigate('/fleet'),
+    onLiveTrack: (v: Vehicle) => navigate(`/live/${v.id}`),
     onPlayBack: undefined,
     onViewMore: (v: Vehicle) => navigate(`/dashboard/${v.id}`),
   }

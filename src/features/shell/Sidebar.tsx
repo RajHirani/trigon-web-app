@@ -1,6 +1,6 @@
 import { faAnglesLeft, faAnglesRight, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import { LogoMark } from '@/components/Logo'
 import type { MenuGroup } from '@/config/menu'
 import { signOut } from '@/services/auth/authService'
@@ -14,6 +14,7 @@ type Props = {
 }
 
 export function Sidebar({ groups, collapsed = false, onToggleCollapse, onNavigate }: Props) {
+  const { pathname } = useLocation()
   return (
     <aside
       className={`flex h-full flex-col bg-sidebar text-sidebar-text transition-[width] duration-200 ${
@@ -44,7 +45,11 @@ export function Sidebar({ groups, collapsed = false, onToggleCollapse, onNavigat
                 className={({ isActive }) =>
                   `mb-1 flex h-11 items-center rounded-lg text-sm transition-colors ${
                     collapsed ? 'justify-center px-0' : 'gap-3 px-3.5'
-                  } ${isActive ? 'bg-sidebar-item font-medium text-sidebar-active' : 'hover:bg-sidebar-item/60'}`
+                  } ${
+                    isActive || i.alsoActiveFor?.some((p) => pathname.startsWith(p))
+                      ? 'bg-sidebar-item font-medium text-sidebar-active'
+                      : 'hover:bg-sidebar-item/60'
+                  }`
                 }
               >
                 <FontAwesomeIcon icon={i.icon} className="w-4 shrink-0" />

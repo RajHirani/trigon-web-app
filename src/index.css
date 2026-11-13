@@ -140,3 +140,5 @@
 
 html, body, #root { height: 100%; }
 body { margin: 0; background: var(--bg-app); color: var(--text-primary); font-family: 'Poppins', system-ui, sans-serif; }
+/* Live Track: darken the street tiles in dark mode (satellite stays as is). */
+.dark-tiles { filter: invert(1) hue-rotate(180deg) brightness(0.9) contrast(0.9); }
