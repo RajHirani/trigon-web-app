@@ -114,17 +114,17 @@ export function DateRangePicker({
       <div className="border-t border-line px-5 pb-5 pt-3.5">
         {problem === 'tooLong' && tooLongHint ? (
           <>
-            <div className="text-[13px] font-semibold text-stopped-fg">
+            <div className="text-[12px] font-semibold text-stopped-fg">
               {days} days selected · max is {maxDays} days
             </div>
-            <div className="mt-1 text-[11px] text-ink-3">{tooLongHint}</div>
+            <div className="mt-1 text-[10px] text-ink-3">{tooLongHint}</div>
           </>
         ) : (
           <>
-            <div className={`text-[13px] font-semibold ${problem ? 'text-stopped-fg' : 'text-ink'}`}>
+            <div className={`text-[12px] font-semibold ${problem ? 'text-stopped-fg' : 'text-ink'}`}>
               {problem === 'tooLong' ? `${days} days selected · max is ${maxDays} days` : `${summary} · ${days} ${days === 1 ? 'day' : 'days'}`}
             </div>
-            {hint && <div className="mt-1 text-[11px] text-ink-3">{hint}</div>}
+            {hint && <div className="mt-1 text-[10px] text-ink-3">{hint}</div>}
           </>
         )}
 
@@ -132,7 +132,7 @@ export function DateRangePicker({
           <button
             type="button"
             onClick={onCancel}
-            className="inline-flex h-11 items-center justify-center rounded-lg border border-line bg-surface text-[13px] font-medium text-control hover:bg-surface-muted"
+            className="inline-flex h-11 items-center justify-center rounded-lg border border-line bg-surface text-[12px] font-medium text-control hover:bg-surface-muted"
           >
             Cancel
           </button>
@@ -140,7 +140,7 @@ export function DateRangePicker({
             type="button"
             disabled={problem !== null}
             onClick={() => onApply({ from, to })}
-            className="inline-flex h-11 items-center justify-center rounded-lg bg-primary text-[13px] font-medium text-on-primary hover:bg-primary-hover disabled:bg-primary/30 disabled:hover:bg-primary/30"
+            className="inline-flex h-11 items-center justify-center rounded-lg bg-primary text-[12px] font-medium text-on-primary hover:bg-primary-hover disabled:bg-primary/30 disabled:hover:bg-primary/30"
           >
             {applyLabel}
           </button>

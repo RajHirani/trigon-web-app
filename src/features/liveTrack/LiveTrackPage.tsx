@@ -77,11 +77,11 @@ export default function LiveTrackPage() {
         />
       </div>
 
-      <div className="pointer-events-none absolute inset-0 z-10 flex flex-col gap-4 p-4 pb-[76px] pr-[68px] lg:p-6">
-        <div className="pointer-events-auto w-full lg:w-[640px] lg:max-w-[calc(100%-120px)]">
+      <div className="pointer-events-none absolute inset-0 z-10 flex flex-col gap-4 p-4 pb-[68px] pr-[61px] lg:p-6">
+        <div className="pointer-events-auto w-full lg:w-[576px] lg:max-w-[calc(100%-120px)]">
           <LiveHeader vehicle={v} updatedAt={track.updatedAt} now={now} onBack={goBack} />
         </div>
-        <div className="min-h-0 w-full lg:max-w-[396px]">
+        <div className="min-h-0 w-full lg:max-w-[356px]">
           <LivePanel
             vehicle={v}
             track={track}

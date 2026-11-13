@@ -25,7 +25,7 @@ export function RangePicker({ initial, now, onCancel, onApply, onDraft }: Props)
       initial={initial}
       now={now}
       maxDays={MAX_DAYS}
-      className="absolute z-20 max-h-[calc(100vh-132px)] w-[min(380px,calc(100vw-32px))] max-lg:left-0 max-lg:top-[150px] lg:left-full lg:top-0 lg:ml-4 lg:[@media(min-height:880px)]:top-[123px]"
+      className="absolute z-20 max-h-[calc(100vh-132px)] w-[min(380px,calc(100vw-32px))] max-lg:left-0 max-lg:top-[135px] lg:left-full lg:top-0 lg:ml-4 lg:[@media(min-height:880px)]:top-[111px]"
       hint={`Playback covers up to ${MAX_DAYS} days at a time.`}
       tooLongHint={
         <>

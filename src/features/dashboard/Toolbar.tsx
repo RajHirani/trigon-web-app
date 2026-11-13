@@ -2,11 +2,11 @@ import { faCheck, faChevronDown, faMagnifyingGlass } from '@fortawesome/free-sol
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useRef, useState } from 'react'
 
-const FIELD = 'h-11 rounded-xl border border-line bg-surface text-[13px] text-ink'
+const FIELD = 'h-11 rounded-xl border border-line bg-surface text-[12px] text-ink'
 
 export function SearchBox({ value, onChange, onSubmit }: { value: string; onChange: (v: string) => void; onSubmit: () => void }) {
   return (
-    <label className={`${FIELD} flex w-full items-center gap-3 px-4 focus-within:border-primary sm:max-w-[380px]`}>
+    <label className={`${FIELD} flex w-full items-center gap-3 px-4 focus-within:border-primary sm:max-w-[342px]`}>
       <FontAwesomeIcon icon={faMagnifyingGlass} className="text-ink-3" />
       <input
         type="search"
@@ -48,7 +48,7 @@ export function DeviceTypeFilter({ options, selected, onSelect }: DeviceTypeProp
     setQuery('')
   }
   const row = (active: boolean) =>
-    `flex h-11 w-full items-center justify-between rounded-lg px-3 text-left text-[13px] ${
+    `flex h-11 w-full items-center justify-between rounded-lg px-3 text-left text-[12px] ${
       active ? 'bg-selected font-semibold text-primary' : 'text-ink hover:bg-surface-muted'
     }`
 
@@ -65,8 +65,8 @@ export function DeviceTypeFilter({ options, selected, onSelect }: DeviceTypeProp
         <FontAwesomeIcon icon={faChevronDown} className="text-xs text-ink-3" />
       </button>
       {open && (
-        <div className="absolute left-0 top-[52px] z-20 w-[300px] rounded-xl border border-line bg-surface p-2 shadow-lg">
-          <label className="mb-1 flex h-10 items-center gap-2 rounded-lg bg-surface-muted px-3 text-[13px]">
+        <div className="absolute left-0 top-[47px] z-20 w-[270px] rounded-xl border border-line bg-surface p-2 shadow-lg">
+          <label className="mb-1 flex h-10 items-center gap-2 rounded-lg bg-surface-muted px-3 text-[12px]">
             <FontAwesomeIcon icon={faMagnifyingGlass} className="text-ink-3" />
             <input
               autoFocus
@@ -93,7 +93,7 @@ export function DeviceTypeFilter({ options, selected, onSelect }: DeviceTypeProp
                 </button>
               </li>
             ))}
-            {shown.length === 0 && <li className="px-3 py-3 text-[13px] text-ink-3">No device types match.</li>}
+            {shown.length === 0 && <li className="px-3 py-3 text-[12px] text-ink-3">No device types match.</li>}
           </ul>
         </div>
       )}

@@ -89,7 +89,7 @@ export default function SignInPage() {
           </div>
         )}
 
-        <label htmlFor="email" className="mb-1.5 block text-[13px] font-medium text-ink">
+        <label htmlFor="email" className="mb-1.5 block text-[12px] font-medium text-ink">
           Email address
         </label>
         <input
@@ -104,7 +104,7 @@ export default function SignInPage() {
         />
         {errors.email && <p className="mt-1 text-xs text-input-error">{errors.email.message}</p>}
 
-        <label htmlFor="password" className="mb-1.5 mt-4 block text-[13px] font-medium text-ink">
+        <label htmlFor="password" className="mb-1.5 mt-4 block text-[12px] font-medium text-ink">
           Password
         </label>
         <div className="relative">
@@ -137,7 +137,7 @@ export default function SignInPage() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="mt-5 flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-[15px] font-medium text-on-primary transition hover:bg-primary-hover disabled:opacity-70"
+          className="mt-5 flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-[14px] font-medium text-on-primary transition hover:bg-primary-hover disabled:opacity-70"
         >
           {isSubmitting && <span className="size-4 animate-spin rounded-full border-2 border-on-primary/40 border-t-on-primary" />}
           {isSubmitting ? 'Signing in…' : 'Sign in'}

@@ -27,7 +27,7 @@ export function ConfirmDialog({ title, message, confirmLabel, pendingLabel, pend
       describedBy={bodyId}
       icon={
         <span
-          className={`flex h-12 w-12 items-center justify-center rounded-full text-[22px] font-bold ${
+          className={`flex h-12 w-12 items-center justify-center rounded-full text-[20px] font-bold ${
             tone === 'danger' ? 'bg-error-bg text-error-text' : 'bg-idle-bg text-idle-fg'
           }`}
         >
@@ -39,7 +39,7 @@ export function ConfirmDialog({ title, message, confirmLabel, pendingLabel, pend
         {message}
       </p>
       {error && (
-        <p role="alert" className="mt-4 rounded-lg border border-error-border bg-error-bg px-3 py-2 text-[13px] text-error-text">
+        <p role="alert" className="mt-4 rounded-lg border border-error-border bg-error-bg px-3 py-2 text-[12px] text-error-text">
           {error}
         </p>
       )}
@@ -49,7 +49,7 @@ export function ConfirmDialog({ title, message, confirmLabel, pendingLabel, pend
           type="button"
           disabled={pending}
           onClick={onCancel}
-          className="h-[46px] rounded-xl border border-line bg-surface px-6 text-sm font-medium text-control hover:bg-surface-muted disabled:opacity-50"
+          className="h-[41px] rounded-xl border border-line bg-surface px-6 text-sm font-medium text-control hover:bg-surface-muted disabled:opacity-50"
         >
           Cancel
         </button>
@@ -57,7 +57,7 @@ export function ConfirmDialog({ title, message, confirmLabel, pendingLabel, pend
           type="button"
           disabled={pending}
           onClick={onConfirm}
-          className="h-[46px] rounded-xl bg-primary px-6 text-sm font-medium text-on-primary hover:bg-primary-hover disabled:opacity-70"
+          className="h-[41px] rounded-xl bg-primary px-6 text-sm font-medium text-on-primary hover:bg-primary-hover disabled:opacity-70"
         >
           {pending ? (pendingLabel ?? confirmLabel) : confirmLabel}
         </button>

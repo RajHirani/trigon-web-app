@@ -30,7 +30,7 @@ export function AuthLayout({ children }: { children: ReactNode }) {
 
       {/* Brand banner (below lg) */}
       <div className="relative bg-auth-panel lg:hidden">
-        <img src={mobileHeader} alt="" className="block h-[260px] w-full object-cover sm:h-[300px]" style={{ opacity: dark ? 0.5 : 1 }} />
+        <img src={mobileHeader} alt="" className="block h-[234px] w-full object-cover sm:h-[270px]" style={{ opacity: dark ? 0.5 : 1 }} />
         <div className="absolute inset-0 flex items-center justify-center gap-3 text-white">
           <LogoMark white className="h-10 w-11" />
           <span className="text-3xl font-semibold tracking-wide">TRIGON</span>
@@ -39,11 +39,11 @@ export function AuthLayout({ children }: { children: ReactNode }) {
 
       {/* Form side */}
       <section className="relative -mt-12 flex flex-1 items-start justify-center overflow-hidden px-4 pb-52 lg:mt-0 lg:items-center lg:pb-40">
-        <div className="relative z-10 w-full max-w-[420px] rounded-2xl border border-line bg-surface p-6 shadow-sm sm:p-8">
+        <div className="relative z-10 w-full max-w-[378px] rounded-2xl border border-line bg-surface p-6 shadow-sm sm:p-8">
           {children}
         </div>
         <img src={dark ? rightDesktopDark : rightDesktopLight} alt="" className="pointer-events-none absolute inset-x-0 bottom-0 hidden w-full lg:block" />
-        <img src={dark ? rightMobileDark : rightMobileLight} alt="" className="pointer-events-none absolute inset-x-0 bottom-0 mx-auto w-full max-w-[600px] lg:hidden" />
+        <img src={dark ? rightMobileDark : rightMobileLight} alt="" className="pointer-events-none absolute inset-x-0 bottom-0 mx-auto w-full max-w-[540px] lg:hidden" />
       </section>
     </div>
   )

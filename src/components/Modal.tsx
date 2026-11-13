@@ -10,7 +10,7 @@ type Props = {
   busy?: boolean
   /** Shows the X button next to the title. */
   showClose?: boolean
-  /** Panel width class, e.g. "max-w-[480px]" (default). */
+  /** Panel width class, e.g. "max-w-[432px]" (default). */
   widthClass?: string
   /** Panel padding / extra classes. */
   className?: string
@@ -32,7 +32,7 @@ export function Modal({
   children,
   busy = false,
   showClose = false,
-  widthClass = 'max-w-[480px]',
+  widthClass = 'max-w-[432px]',
   className = 'p-6 sm:p-8',
   describedBy,
   icon,

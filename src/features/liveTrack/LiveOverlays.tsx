@@ -14,7 +14,7 @@ type HeaderProps = { vehicle: Vehicle; updatedAt: string; now: number; onBack: (
 export function LiveHeader({ vehicle, updatedAt, now, onBack }: HeaderProps) {
   const offline = vehicle.status === 'offline'
   return (
-    <div className={`${FLOAT} flex flex-wrap items-center gap-x-4 gap-y-2 px-3.5 py-3.5 lg:h-[68px] lg:flex-nowrap lg:py-0`}>
+    <div className={`${FLOAT} flex flex-wrap items-center gap-x-4 gap-y-2 px-3.5 py-3.5 lg:h-[61px] lg:flex-nowrap lg:py-0`}>
       <button
         onClick={onBack}
         aria-label="Back"
@@ -23,13 +23,13 @@ export function LiveHeader({ vehicle, updatedAt, now, onBack }: HeaderProps) {
         <FontAwesomeIcon icon={faArrowLeft} />
       </button>
       <div className="min-w-0 flex-1 basis-40">
-        <div className="truncate text-lg font-semibold leading-[27px] text-ink">{vehicle.plate}</div>
+        <div className="truncate text-lg font-semibold leading-[24px] text-ink">{vehicle.plate}</div>
         <div className="truncate text-xs text-ink-3">
           {vehicle.vehicleType} · {vehicle.owner}
         </div>
       </div>
       <StatusPill status={vehicle.status} />
-      <div className="flex min-h-10 min-w-0 items-center gap-2 rounded-xl bg-surface-muted px-3.5 py-1.5 text-[13px] font-medium text-ink">
+      <div className="flex min-h-10 min-w-0 items-center gap-2 rounded-xl bg-surface-muted px-3.5 py-1.5 text-[12px] font-medium text-ink">
         <span className={`h-2 w-2 shrink-0 rounded-full ${offline ? 'bg-offline' : 'bg-moving'}`} />
         <span className="min-w-0">
           {offline ? 'Offline · last seen' : 'Live · updated'} {formatAgoSeconds(updatedAt, now)}
@@ -90,7 +90,7 @@ function LayerPicker({ layer, onChange }: { layer: MapLayer; onChange: (l: MapLa
                 onChange(l.value)
                 setOpen(false)
               }}
-              className={`flex h-9 w-full items-center rounded-lg px-3 text-[13px] ${
+              className={`flex h-9 w-full items-center rounded-lg px-3 text-[12px] ${
                 l.value === layer ? 'bg-primary-subtle font-medium text-primary' : 'text-control hover:bg-surface-muted'
               }`}
             >
@@ -108,11 +108,11 @@ export function MapControls(p: ControlsProps) {
   return (
     <div className="flex flex-col items-end gap-3">
       <div className={`${FLOAT} flex w-11 flex-col overflow-hidden`}>
-        <button onClick={p.onZoomIn} aria-label="Zoom in" className="h-[42.5px] text-xl text-ink hover:bg-surface-muted">
+        <button onClick={p.onZoomIn} aria-label="Zoom in" className="h-[38px] text-xl text-ink hover:bg-surface-muted">
           +
         </button>
         <div className="mx-2 h-px bg-line" />
-        <button onClick={p.onZoomOut} aria-label="Zoom out" className="h-[42.5px] text-xl text-ink hover:bg-surface-muted">
+        <button onClick={p.onZoomOut} aria-label="Zoom out" className="h-[38px] text-xl text-ink hover:bg-surface-muted">
           −
         </button>
       </div>
@@ -156,21 +156,21 @@ export function MapControls(p: ControlsProps) {
 /** Bottom-centre legend with the path switch. Figma "Path Legend". */
 export function PathLegend({ since, on, onToggle }: { since: string; on: boolean; onToggle: () => void }) {
   return (
-    <div className={`${FLOAT} flex h-11 w-[248px] items-center gap-3.5 pl-4 pr-3`}>
+    <div className={`${FLOAT} flex h-11 w-[223px] items-center gap-3.5 pl-4 pr-3`}>
       <span className={`h-1 w-7 shrink-0 rounded-full ${on ? 'bg-primary' : 'bg-switch-off'}`} />
       <div className="min-w-0 flex-1">
-        <div className="text-[13px] font-semibold leading-5 text-ink">Today’s path</div>
-        <div className="text-[11px] leading-[14px] text-ink-3">Since {formatClock(since)}</div>
+        <div className="text-[12px] font-semibold leading-5 text-ink">Today’s path</div>
+        <div className="text-[10px] leading-[13px] text-ink-3">Since {formatClock(since)}</div>
       </div>
       <button
         role="switch"
         aria-checked={on}
         aria-label="Show today's path"
         onClick={onToggle}
-        className={`relative h-[22px] w-10 shrink-0 rounded-full transition-colors ${on ? 'bg-primary' : 'bg-switch-off'}`}
+        className={`relative h-[20px] w-10 shrink-0 rounded-full transition-colors ${on ? 'bg-primary' : 'bg-switch-off'}`}
       >
         <span
-          className={`absolute top-[3px] h-4 w-4 rounded-full bg-white shadow transition-[left] ${on ? 'left-[21px]' : 'left-[3px]'}`}
+          className={`absolute top-[2.5px] h-4 w-4 rounded-full bg-white shadow transition-[left] ${on ? 'left-[19px]' : 'left-[2.5px]'}`}
         />
       </button>
     </div>

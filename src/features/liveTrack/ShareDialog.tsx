@@ -54,13 +54,13 @@ export function ShareDialog({ vehicleId, onClose }: Props) {
 
   return (
     <Modal title="Share live location" onClose={onClose} busy={busy} showClose className="p-8" initialFocus={doneRef}>
-        <p className="mt-2 text-[13px] leading-5 text-ink-3">
+        <p className="mt-2 text-[12px] leading-5 text-ink-3">
           Anyone with the link can follow this vehicle live.
           <br />
           No sign-in needed.
         </p>
 
-        <h3 className="mt-6 text-[11px] font-medium uppercase tracking-wide text-ink-3">Link valid for</h3>
+        <h3 className="mt-6 text-[10px] font-medium uppercase tracking-wide text-ink-3">Link valid for</h3>
         <div className="relative">
         <div role="radiogroup" aria-label="Link valid for" className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4">
           {OPTIONS.map((o) => {
@@ -76,7 +76,7 @@ export function ShareDialog({ vehicleId, onClose }: Props) {
                   else lastDuration.current = o.value
                   setDuration(o.value)
                 }}
-                className={`h-10 rounded-lg border text-[13px] font-medium ${
+                className={`h-10 rounded-lg border text-[12px] font-medium ${
                   on ? 'border-primary bg-primary-subtle text-primary' : 'border-line bg-surface text-control hover:bg-surface-muted'
                 }`}
               >
@@ -103,7 +103,7 @@ export function ShareDialog({ vehicleId, onClose }: Props) {
         )}
         </div>
         {duration === 'custom' && !pickerOpen && custom && (
-          <p className="mt-3 text-[13px] text-ink-2">
+          <p className="mt-3 text-[12px] text-ink-2">
             Valid until end of {formatDate(custom.until)} ·{' '}
             <button type="button" data-range-trigger onClick={() => setPickerOpen(true)} className="font-medium text-primary hover:underline">
               Change
@@ -111,19 +111,19 @@ export function ShareDialog({ vehicleId, onClose }: Props) {
           </p>
         )}
 
-        <h3 className="mt-6 text-[11px] font-medium uppercase tracking-wide text-ink-3">Share link</h3>
-        <div className="mt-2 flex h-[52px] items-center gap-2 rounded-xl border border-line bg-surface-muted pl-4 pr-1.5">
+        <h3 className="mt-6 text-[10px] font-medium uppercase tracking-wide text-ink-3">Share link</h3>
+        <div className="mt-2 flex h-[47px] items-center gap-2 rounded-xl border border-line bg-surface-muted pl-4 pr-1.5">
           <input
             readOnly
             aria-label="Share link"
             value={link?.url ?? (create.isError ? '' : 'Creating link…')}
             onFocus={(e) => e.currentTarget.select()}
-            className="min-w-0 flex-1 bg-transparent text-[13px] text-ink outline-none"
+            className="min-w-0 flex-1 bg-transparent text-[12px] text-ink outline-none"
           />
           <button
             onClick={() => void copy()}
             disabled={!link}
-            className="h-10 shrink-0 rounded-lg bg-primary px-5 text-[13px] font-medium text-on-primary hover:bg-primary-hover disabled:opacity-60"
+            className="h-10 shrink-0 rounded-lg bg-primary px-5 text-[12px] font-medium text-on-primary hover:bg-primary-hover disabled:opacity-60"
           >
             {copied ? 'Copied' : 'Copy'}
           </button>
@@ -196,7 +196,7 @@ function ExpiryPopover({ now, selected, onPick, onCancel }: { now: number; selec
       className="absolute right-0 top-full z-10 mt-2 w-[min(340px,100%)] rounded-2xl border border-line bg-surface p-4 shadow-[0_12px_32px_rgba(15,27,45,0.18)]"
     >
       <Calendar start={selected} end={null} onPick={onPick} minDate={today} maxDate={null} initialMonth={selected} />
-      <p className="mt-2 text-[11px] text-ink-3">Pick the last day. The link stops working at the end of it.</p>
+      <p className="mt-2 text-[10px] text-ink-3">Pick the last day. The link stops working at the end of it.</p>
     </div>
   )
 }

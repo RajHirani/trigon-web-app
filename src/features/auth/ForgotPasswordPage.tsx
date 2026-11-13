@@ -16,7 +16,7 @@ const fieldClass = (invalid: boolean) =>
   }`
 
 const buttonClass =
-  'flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-[15px] font-medium text-on-primary transition hover:bg-primary-hover disabled:opacity-70'
+  'flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-[14px] font-medium text-on-primary transition hover:bg-primary-hover disabled:opacity-70'
 
 function Spinner() {
   return <span className="size-4 animate-spin rounded-full border-2 border-on-primary/40 border-t-on-primary" />
@@ -73,7 +73,7 @@ export default function ForgotPasswordPage() {
         <h1 className="mt-5 text-2xl font-semibold text-ink">Check your email</h1>
         <p className="mt-2 text-sm text-ink-3">We’ve sent a password reset link to</p>
         <p className="mt-0.5 break-all text-sm font-semibold text-ink">{sentTo}</p>
-        <p className="mt-5 text-[13px] text-ink-3">
+        <p className="mt-5 text-[12px] text-ink-3">
           The link expires in 30 minutes. If you don’t see it, <br className="hidden sm:inline" />
           check your spam folder.
         </p>
@@ -82,7 +82,7 @@ export default function ForgotPasswordPage() {
           Back to sign in
         </Link>
 
-        <p className="mt-4 text-center text-[13px] text-ink-3" role="status">
+        <p className="mt-4 text-center text-[12px] text-ink-3" role="status">
           {resent ? 'Link sent again.' : 'Didn’t get the email?'}{' '}
           <button type="button" onClick={resend} disabled={resending} className="font-medium text-primary hover:underline disabled:opacity-60">
             {resending ? 'Sending…' : 'Resend link'}
@@ -104,7 +104,7 @@ export default function ForgotPasswordPage() {
           </div>
         )}
 
-        <label htmlFor="email" className="mb-1.5 block text-[13px] font-medium text-ink">
+        <label htmlFor="email" className="mb-1.5 block text-[12px] font-medium text-ink">
           Email address
         </label>
         <input
@@ -126,7 +126,7 @@ export default function ForgotPasswordPage() {
       </form>
 
       <div className="mt-5 text-center">
-        <Link to="/login" className="text-[13px] font-medium text-primary hover:underline">
+        <Link to="/login" className="text-[12px] font-medium text-primary hover:underline">
           ← Back to sign in
         </Link>
       </div>

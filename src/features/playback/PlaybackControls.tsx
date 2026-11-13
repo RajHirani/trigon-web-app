@@ -7,7 +7,7 @@ import { formatDateTimeSeconds, formatDistance, formatEdge, startOfDay } from '.
 import type { PlaybackPoint, TripAnalysis } from './types'
 import { SPEEDS, type PlayerSpeed } from './usePlayback'
 
-const CAPTION = 'text-[10px] font-medium uppercase tracking-wide text-ink-3'
+const CAPTION = 'text-[9px] font-medium uppercase tracking-wide text-ink-3'
 
 type SliderProps = {
   count: number
@@ -82,7 +82,7 @@ function Timeline({ count, pos, analysis, valueText, onSeek }: SliderProps) {
       ))}
       <span
         aria-hidden
-        className="pointer-events-none absolute top-1/2 h-[18px] w-[18px] -translate-x-1/2 -translate-y-1/2 rounded-full border-[3px] border-primary bg-surface shadow"
+        className="pointer-events-none absolute top-1/2 h-[16px] w-[16px] -translate-x-1/2 -translate-y-1/2 rounded-full border-[3px] border-primary bg-surface shadow"
         style={{ left: pct(pos) }}
       />
     </div>
@@ -114,11 +114,11 @@ export function PlaybackControls({ points, analysis, pos, playing, speed, onTogg
         <button
           onClick={onToggle}
           aria-label={playing ? 'Pause' : 'Play'}
-          className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full bg-primary text-lg text-on-primary hover:bg-primary-hover"
+          className="flex h-[47px] w-[47px] shrink-0 items-center justify-center rounded-full bg-primary text-lg text-on-primary hover:bg-primary-hover"
         >
           <FontAwesomeIcon icon={playing ? faPause : faPlay} className={playing ? '' : 'ml-0.5'} />
         </button>
-        <div className="grid flex-1 grid-cols-[minmax(0,1.9fr)_minmax(0,1fr)_minmax(0,1fr)] gap-x-6 gap-y-1 sm:min-w-[420px]">
+        <div className="grid flex-1 grid-cols-[minmax(0,1.9fr)_minmax(0,1fr)_minmax(0,1fr)] gap-x-6 gap-y-1 sm:min-w-[378px]">
           <div className="min-w-0">
             <div className={CAPTION}>Time</div>
             <div className="mt-0.5 truncate text-sm font-medium text-ink">{time}</div>
@@ -144,7 +144,7 @@ export function PlaybackControls({ points, analysis, pos, playing, speed, onTogg
 
       <div>
         <Timeline count={points.length} pos={pos} analysis={analysis} valueText={time} onSeek={onSeek} />
-        <div className="flex justify-between text-[11px] leading-4 text-ink-3">
+        <div className="flex justify-between text-[10px] leading-4 text-ink-3">
           <span>{formatEdge(first.t, multiDay)}</span>
           <span>{formatEdge(lastPoint.t, multiDay)}</span>
         </div>

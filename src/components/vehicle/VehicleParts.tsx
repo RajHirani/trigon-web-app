@@ -71,7 +71,7 @@ function AlertChip({ alert }: { alert: VehicleAlert }) {
   const { label, icon } = ALERT[alert]
   return (
     <span className="inline-flex h-7 items-center gap-1.5 whitespace-nowrap rounded-full bg-stopped-bg px-3 text-xs font-medium text-stopped-fg">
-      <FontAwesomeIcon icon={icon} className="text-[11px]" />
+      <FontAwesomeIcon icon={icon} className="text-[10px]" />
       {label}
     </span>
   )
@@ -118,7 +118,7 @@ function UpdatedText({ vehicle }: { vehicle: Vehicle }) {
   const offline = vehicle.status === 'offline'
   return (
     <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-0.5">
-      <div className={`whitespace-nowrap text-[13px] font-medium ${offline ? 'text-stopped-fg' : 'text-ink'}`}>
+      <div className={`whitespace-nowrap text-[12px] font-medium ${offline ? 'text-stopped-fg' : 'text-ink'}`}>
         {offline ? 'Last seen' : 'Updated'} {formatAgo(vehicle.lastUpdate)}
       </div>
       <div className="whitespace-nowrap text-xs text-ink-2">
@@ -142,7 +142,7 @@ export function UpdatedPanel({ vehicle }: { vehicle: Vehicle }) {
 
 // Three equal buttons that never leave the card: compact (no icons) on narrow cards.
 const BTN =
-  'inline-flex h-10 min-w-0 flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-lg px-1 text-xs font-medium @[380px]:px-3 @[380px]:text-[13px]'
+  'inline-flex h-10 min-w-0 flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-lg px-1 text-xs font-medium @[380px]:px-3 @[380px]:text-[12px]'
 const ICON = 'hidden @[380px]:inline'
 
 export function ActionButtons({ vehicle, onLiveTrack, onPlayBack, onViewMore }: VehicleActions & { vehicle: Vehicle }) {

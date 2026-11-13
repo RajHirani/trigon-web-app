@@ -142,7 +142,7 @@ export default function DashboardPage() {
       <div className="flex flex-wrap items-center gap-3">
         <SearchBox value={searchText} onChange={changeSearch} onSubmit={submitSearch} />
         <DeviceTypeFilter options={deviceTypes.data ?? []} selected={deviceType} onSelect={changeDeviceType} />
-        <span className="text-[13px] text-ink-3 sm:ml-auto">{counter}</span>
+        <span className="text-[12px] text-ink-3 sm:ml-auto">{counter}</span>
       </div>
 
       <div className="flex-1">{content}</div>

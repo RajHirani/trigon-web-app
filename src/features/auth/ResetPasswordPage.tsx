@@ -37,7 +37,7 @@ function PasswordInput({
   const [show, setShow] = useState(false)
   return (
     <div className={className}>
-      <label htmlFor={id} className="mb-1.5 block text-[13px] font-medium text-ink">
+      <label htmlFor={id} className="mb-1.5 block text-[12px] font-medium text-ink">
         {label}
       </label>
       <div className="relative">
@@ -141,7 +141,7 @@ export default function ResetPasswordPage() {
         <button
           type="submit"
           disabled={isSubmitting || linkExpired}
-          className="mt-5 flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-[15px] font-medium text-on-primary transition hover:bg-primary-hover disabled:opacity-70"
+          className="mt-5 flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-[14px] font-medium text-on-primary transition hover:bg-primary-hover disabled:opacity-70"
         >
           {isSubmitting && <span className="size-4 animate-spin rounded-full border-2 border-on-primary/40 border-t-on-primary" />}
           {isSubmitting ? 'Resetting…' : 'Reset password'}

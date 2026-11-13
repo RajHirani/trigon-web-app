@@ -15,7 +15,7 @@ import {
 function MetricRow({ icon, label, children, iconClass }: { icon: typeof faBolt; label: string; children: React.ReactNode; iconClass: string }) {
   return (
     <div className="flex items-center justify-between gap-2">
-      <span className="flex min-w-0 items-center gap-2 text-xs text-ink-2 @[380px]:text-[13px]">
+      <span className="flex min-w-0 items-center gap-2 text-xs text-ink-2 @[380px]:text-[12px]">
         <FontAwesomeIcon icon={icon} className={`w-4 shrink-0 ${iconClass}`} />
         <span className="truncate">{label}</span>
       </span>

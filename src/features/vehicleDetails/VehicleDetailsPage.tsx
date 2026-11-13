@@ -10,7 +10,7 @@ import { LockDialog } from './LockDialog'
 import { AddressCard, SummarySkeleton, SummaryTiles } from './SummaryTiles'
 import { useSetDeviceLock, useVehicle, useVehicleSummary } from './useVehicleDetails'
 
-const BTN = 'inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-lg px-4 text-[13px] font-medium'
+const BTN = 'inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-lg px-4 text-[12px] font-medium'
 const PULSE = 'motion-safe:animate-pulse'
 
 // "View More" screen. Figma: Dashboard / Desktop / Light · View More (+ Dark, Loading, Lock device dialog).
@@ -59,7 +59,7 @@ export default function VehicleDetailsPage() {
         <button
           type="button"
           onClick={goBack}
-          className="inline-flex h-10 items-center gap-2 rounded-lg border border-line bg-surface px-3.5 text-[13px] font-medium text-control hover:bg-surface-muted"
+          className="inline-flex h-10 items-center gap-2 rounded-lg border border-line bg-surface px-3.5 text-[12px] font-medium text-control hover:bg-surface-muted"
         >
           <FontAwesomeIcon icon={faArrowLeft} />
           Back
@@ -72,10 +72,10 @@ export default function VehicleDetailsPage() {
               <VehicleIcon />
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                  <h2 className="text-[22px] font-semibold leading-[33px] text-ink">{v.plate}</h2>
+                  <h2 className="text-[20px] font-semibold leading-[30px] text-ink">{v.plate}</h2>
                   <StatusPill status={v.status} />
                 </div>
-                <p className="text-[13px] text-ink-3">
+                <p className="text-[12px] text-ink-3">
                   {v.vehicleType} · {v.owner}
                 </p>
                 <p className="mt-2 flex items-center gap-2 text-xs font-medium text-ink-2">
@@ -104,17 +104,17 @@ export default function VehicleDetailsPage() {
           <div aria-hidden className="flex w-full items-start gap-4">
             <div className={`${PULSE} h-11 w-11 shrink-0 rounded-xl bg-skeleton`} />
             <div className="flex flex-col gap-2">
-              <div className={`${PULSE} h-6 w-[200px] rounded-md bg-skeleton`} />
-              <div className={`${PULSE} h-3 w-[140px] rounded-md bg-skeleton-soft`} />
-              <div className={`${PULSE} h-3 w-[260px] rounded-md bg-skeleton-soft`} />
+              <div className={`${PULSE} h-6 w-[180px] rounded-md bg-skeleton`} />
+              <div className={`${PULSE} h-3 w-[126px] rounded-md bg-skeleton-soft`} />
+              <div className={`${PULSE} h-3 w-[234px] rounded-md bg-skeleton-soft`} />
             </div>
           </div>
         )}
       </section>
 
       <div>
-        <h2 className="text-[17px] font-semibold leading-[26px] text-ink">Today’s summary</h2>
-        <p className="text-[13px] text-ink-3">
+        <h2 className="text-[15px] font-semibold leading-[23px] text-ink">Today’s summary</h2>
+        <p className="text-[12px] text-ink-3">
           {summary.data
             ? `Running, idle and stop times are counted from ${formatDayStart(summary.data.countedFrom)}.`
             : 'Running, idle and stop times are counted from midnight.'}
@@ -141,7 +141,7 @@ export default function VehicleDetailsPage() {
           />
           <AddressCard address={summary.data.address} lat={summary.data.lat} lng={summary.data.lng} />
           {lock.isError && !confirmOpen && (
-            <p role="alert" className="text-[13px] text-error-text">
+            <p role="alert" className="text-[12px] text-error-text">
               Couldn’t unlock the device. Please try again.
             </p>
           )}

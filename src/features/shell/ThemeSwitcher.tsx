@@ -21,11 +21,11 @@ export function ThemeSwitcher() {
             aria-checked={active}
             aria-label={s.label}
             onClick={() => setPreference(s.value)}
-            className={`flex items-center gap-1.5 rounded-full px-2.5 py-[7px] text-[13px] font-medium md:pl-3 md:pr-3.5 ${
+            className={`flex items-center gap-1.5 rounded-full px-2.5 py-[6px] text-[12px] font-medium md:pl-3 md:pr-3.5 ${
               active ? 'bg-toggle-active text-ink shadow-[0_1px_4px_rgba(15,27,45,0.1)]' : 'text-ink-3'
             }`}
           >
-            <FontAwesomeIcon icon={s.icon} className={`text-[14px] ${active ? 'text-toggle-active-icon' : ''}`} />
+            <FontAwesomeIcon icon={s.icon} className={`text-[13px] ${active ? 'text-toggle-active-icon' : ''}`} />
             <span className="hidden md:inline">{s.label}</span>
           </button>
         )

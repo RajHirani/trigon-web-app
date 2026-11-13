@@ -18,7 +18,7 @@ export function Sidebar({ groups, collapsed = false, onToggleCollapse, onNavigat
   return (
     <aside
       className={`flex h-full flex-col bg-sidebar text-sidebar-text transition-[width] duration-200 ${
-        collapsed ? 'w-[72px]' : 'w-60'
+        collapsed ? 'w-[65px]' : 'w-60'
       }`}
     >
       <div className={`flex h-16 shrink-0 items-center gap-3 ${collapsed ? 'justify-center' : 'px-5'}`}>
@@ -32,7 +32,7 @@ export function Sidebar({ groups, collapsed = false, onToggleCollapse, onNavigat
             {collapsed ? (
               <div className="mx-2 mb-2 border-t border-sidebar-item" />
             ) : (
-              <div className="px-3 pb-1.5 text-[10px] font-medium uppercase tracking-wider text-sidebar-caption">
+              <div className="px-3 pb-1.5 text-[9px] font-medium uppercase tracking-wider text-sidebar-caption">
                 {g.title}
               </div>
             )}

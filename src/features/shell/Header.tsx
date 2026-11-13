@@ -17,7 +17,7 @@ export function Header({ title, subtitle, onOpenMenu }: Props) {
     .join('')
 
   return (
-    <header className="flex h-[72px] shrink-0 items-center gap-2 bg-surface px-3 sm:gap-3 sm:px-4 lg:px-6">
+    <header className="flex h-[65px] shrink-0 items-center gap-2 bg-surface px-3 sm:gap-3 sm:px-4 lg:px-6">
       <button
         className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-ink-2 hover:bg-surface-muted lg:hidden"
         aria-label="Open menu"
@@ -27,19 +27,19 @@ export function Header({ title, subtitle, onOpenMenu }: Props) {
       </button>
 
       <div className="min-w-0 flex-1">
-        <h1 className="truncate text-lg font-semibold leading-[33px] text-ink sm:text-[22px]">{title}</h1>
-        {subtitle && <p className="hidden truncate text-xs leading-[18px] text-ink-3 sm:block">{subtitle}</p>}
+        <h1 className="truncate text-lg font-semibold leading-[30px] text-ink sm:text-[20px]">{title}</h1>
+        {subtitle && <p className="hidden truncate text-xs leading-[16px] text-ink-3 sm:block">{subtitle}</p>}
       </div>
 
       <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-4">
         <ThemeSwitcher />
         <div className="flex items-center gap-2.5 rounded-full border border-line bg-surface p-1.5 sm:pr-3.5">
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-[13px] font-semibold text-on-primary">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-[12px] font-semibold text-on-primary">
             {initials}
           </div>
           <div className="hidden leading-tight sm:block">
-            <div className="max-w-40 truncate text-[13px] font-semibold leading-5 text-ink">{user?.name}</div>
-            <div className="text-[11px] leading-[17px] text-ink-3">{user ? roleLabel(user.role) : ''}</div>
+            <div className="max-w-40 truncate text-[12px] font-semibold leading-5 text-ink">{user?.name}</div>
+            <div className="text-[10px] leading-[15px] text-ink-3">{user ? roleLabel(user.role) : ''}</div>
           </div>
           <span className="hidden sm:block">
             <FontAwesomeIcon icon={faChevronDown} className="text-xs text-ink-3" />

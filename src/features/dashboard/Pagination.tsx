@@ -9,12 +9,12 @@ type Props = {
   loading?: boolean
 }
 
-const BTN = 'flex h-10 min-w-10 items-center justify-center rounded-lg border px-2 text-[13px] font-medium'
+const BTN = 'flex h-10 min-w-10 items-center justify-center rounded-lg border px-2 text-[12px] font-medium'
 
 export function Pagination({ page, pageCount, pageSize, onChange, loading = false }: Props) {
   return (
     <nav aria-label="Pagination" aria-busy={loading} className={`flex flex-wrap items-center justify-between gap-3 ${loading ? 'pointer-events-none' : ''}`}>
-      <p className="text-[13px] text-ink-3">
+      <p className="text-[12px] text-ink-3">
         Page {page} of {pageCount} · {pageSize} vehicles per page
       </p>
       <div className="flex items-center gap-2">

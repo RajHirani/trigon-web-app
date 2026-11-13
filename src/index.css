@@ -147,6 +147,25 @@
 }
 
 html, body, #root { height: 100%; }
+
+/* Sizes are tuned ~10% below Tailwind defaults (laptop-friendly density). */
+@theme {
+  --spacing: 0.225rem;
+  --text-xs: 0.675rem;
+  --text-sm: 0.7875rem;
+  --text-base: 0.9rem;
+  --text-lg: 1.0125rem;
+  --text-xl: 1.125rem;
+  --text-2xl: 1.35rem;
+  --text-3xl: 1.6875rem;
+  --text-4xl: 2.025rem;
+  --radius-sm: 0.225rem;
+  --radius-md: 0.3375rem;
+  --radius-lg: 0.45rem;
+  --radius-xl: 0.675rem;
+  --radius-2xl: 0.9rem;
+  --radius-3xl: 1.35rem;
+}
 body { margin: 0; background: var(--bg-app); color: var(--text-primary); font-family: 'Poppins', system-ui, sans-serif; }
 /* Live Track: darken the street tiles in dark mode (satellite stays as is). */
 .dark-tiles { filter: invert(1) hue-rotate(180deg) brightness(0.9) contrast(0.9); }

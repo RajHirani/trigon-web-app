@@ -237,10 +237,10 @@ export function TrigonLoader({ vehicleKind = 'car', title, subtitle, onCancel }:
       aria-label={title ?? 'Loading'}
       className="absolute inset-0 z-30 flex items-center justify-center bg-app/75 p-4 backdrop-blur-[6px]"
     >
-      <div className="flex w-full max-w-[360px] flex-col items-center gap-4">
+      <div className="flex w-full max-w-[324px] flex-col items-center gap-4">
         <div className="flex items-center gap-3">
           <Logo />
-          <span className="text-[19px] font-semibold leading-7 tracking-[0.3em] text-ink">TRIGON</span>
+          <span className="text-[17px] font-semibold leading-7 tracking-[0.3em] text-ink">TRIGON</span>
         </div>
 
         <div className="w-full overflow-hidden rounded-2xl border border-line bg-[var(--loader-map)]" style={{ aspectRatio: `${MAP.width} / ${MAP.height}` }}>
@@ -285,13 +285,13 @@ export function TrigonLoader({ vehicleKind = 'car', title, subtitle, onCancel }:
         {title && (
           <div className="text-center">
             <h2 className="text-base font-semibold text-ink">{title}</h2>
-            {(subtitle || slow) && <p className="mt-1 text-[13px] text-ink-3">{slow ? 'Taking longer than usual' : subtitle}</p>}
+            {(subtitle || slow) && <p className="mt-1 text-[12px] text-ink-3">{slow ? 'Taking longer than usual' : subtitle}</p>}
           </div>
         )}
 
         <div className="flex items-center gap-2" aria-hidden>
           {BARS.map((_, i) => (
-            <div key={i} className="h-1 w-[22px] overflow-hidden rounded-full bg-line">
+            <div key={i} className="h-1 w-[20px] overflow-hidden rounded-full bg-line">
               <div
                 ref={(el) => {
                   m.bars.current[i] = el
@@ -306,7 +306,7 @@ export function TrigonLoader({ vehicleKind = 'car', title, subtitle, onCancel }:
         {onCancel && (
           <button
             onClick={onCancel}
-            className="inline-flex h-11 items-center justify-center rounded-lg border border-line bg-surface px-8 text-[13px] font-medium text-ink hover:bg-surface-muted"
+            className="inline-flex h-11 items-center justify-center rounded-lg border border-line bg-surface px-8 text-[12px] font-medium text-ink hover:bg-surface-muted"
           >
             Cancel
           </button>

@@ -71,14 +71,14 @@ export function Calendar({ start, end, onPick, maxDate, minDate, initialMonth }:
         </button>
       </div>
 
-      <div className="mt-3 grid grid-cols-7 text-center text-[11px] font-medium text-ink-3">
+      <div className="mt-3 grid grid-cols-7 text-center text-[10px] font-medium text-ink-3">
         {WEEKDAYS.map((d, i) => (
           <div key={i} className="h-8 leading-8">
             {d}
           </div>
         ))}
       </div>
-      <div className="grid grid-cols-7 text-center text-[13px]">
+      <div className="grid grid-cols-7 text-center text-[12px]">
         {cells.map((day, i) => {
           if (day === null) return <div key={`b${i}`} />
           const disabled = (max !== null && day > max) || (min !== undefined && day < min)

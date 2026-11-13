@@ -30,7 +30,7 @@ export function SpeedGauge({ speed, status }: Props) {
   const step = SWEEP / (TICKS - 1)
   const half = (TICK_LEN - TICK_W) / 2
   return (
-    <div className="relative aspect-[150/124] w-[120px] shrink-0 @[380px]:w-[150px]" role="img" aria-label={speed === null ? 'No speed reading' : `${Math.round(speed)} kilometres per hour`}>
+    <div className="relative aspect-[150/124] w-[108px] shrink-0 @[380px]:w-[135px]" role="img" aria-label={speed === null ? 'No speed reading' : `${Math.round(speed)} kilometres per hour`}>
       <svg viewBox={`0 0 ${W} ${H}`} className="absolute inset-0 h-full w-full">
         {Array.from({ length: TICKS }, (_, i) => {
           const a = ((-SWEEP / 2 + i * step) * Math.PI) / 180
@@ -51,8 +51,8 @@ export function SpeedGauge({ speed, status }: Props) {
         })}
       </svg>
       <div className="absolute inset-x-0 top-[31%] flex flex-col items-center">
-        <span className="text-[26px] font-semibold leading-8 @[380px]:text-[32px] @[380px]:leading-10 text-ink">{speed === null ? '—' : Math.round(speed)}</span>
-        <span className="text-[13px] leading-5 text-ink-3">km/h</span>
+        <span className="text-[23px] font-semibold leading-8 @[380px]:text-[29px] @[380px]:leading-10 text-ink">{speed === null ? '—' : Math.round(speed)}</span>
+        <span className="text-[12px] leading-5 text-ink-3">km/h</span>
       </div>
     </div>
   )

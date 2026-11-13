@@ -12,7 +12,7 @@ import {
   type TripSettings,
 } from './types'
 
-const CAPTION = 'text-[11px] font-medium uppercase tracking-wide text-ink-3'
+const CAPTION = 'text-[10px] font-medium uppercase tracking-wide text-ink-3'
 const CHIPS: { value: RangePreset; label: string }[] = [
   { value: 'today', label: 'Today' },
   { value: 'yesterday', label: 'Yesterday' },
@@ -24,8 +24,8 @@ const CHIPS: { value: RangePreset; label: string }[] = [
 function SettingSelect({ label, value, options, unit, onChange }: { label: string; value: number; options: readonly number[]; unit: string; onChange: (v: number) => void }) {
   return (
     <label className="relative block h-12 cursor-pointer rounded-lg border border-line px-3 py-1.5 focus-within:border-primary hover:bg-surface-muted">
-      <span className="block text-[11px] leading-4 text-ink-3">{label}</span>
-      <span className="block text-[13px] font-medium leading-5 text-ink">
+      <span className="block text-[10px] leading-4 text-ink-3">{label}</span>
+      <span className="block text-[12px] font-medium leading-5 text-ink">
         {value} {unit}
       </span>
       <select
@@ -47,8 +47,8 @@ function SettingSelect({ label, value, options, unit, onChange }: { label: strin
 function Tile({ label, value, tone = 'text-ink' }: { label: string; value: string; tone?: string }) {
   return (
     <div className="min-w-0 rounded-xl bg-surface-muted px-3 py-2">
-      <div className="truncate text-[11px] leading-4 text-ink-3">{label}</div>
-      <div className={`truncate text-[17px] font-semibold leading-6 ${tone}`}>{value}</div>
+      <div className="truncate text-[10px] leading-4 text-ink-3">{label}</div>
+      <div className={`truncate text-[15px] font-semibold leading-6 ${tone}`}>{value}</div>
     </div>
   )
 }
@@ -73,11 +73,11 @@ export function PlaybackPanel({ range, draft, pickerOpen, settings, analysis, co
   const card = formatRangeCard(shown.from, shown.to)
 
   if (collapsed && analysis) {
-    const chip = 'inline-flex h-[26px] items-center whitespace-nowrap rounded-full px-2.5 text-xs font-medium'
+    const chip = 'inline-flex h-[23px] items-center whitespace-nowrap rounded-full px-2.5 text-xs font-medium'
     return (
-      <div className={`${FLOAT} flex w-full max-w-[436px] items-start gap-3 px-3.5 py-4 lg:w-[436px]`}>
+      <div className={`${FLOAT} flex w-full max-w-[392px] items-start gap-3 px-3.5 py-4 lg:w-[392px]`}>
         <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-2 text-[13px] font-medium text-ink">
+          <div className="flex items-center gap-2 text-[12px] font-medium text-ink">
             <FontAwesomeIcon icon={faClock} className="text-primary" />
             <span className="truncate">{card}</span>
           </div>
@@ -107,9 +107,9 @@ export function PlaybackPanel({ range, draft, pickerOpen, settings, analysis, co
   const activeChip: RangePreset = pickerOpen ? 'custom' : range.preset
   const tooLong = !!draft?.tooLong
   return (
-    <div className={`${FLOAT} flex max-h-full w-full max-w-[396px] flex-col gap-5 overflow-y-auto overflow-x-hidden p-6`}>
+    <div className={`${FLOAT} flex max-h-full w-full max-w-[356px] flex-col gap-5 overflow-y-auto overflow-x-hidden p-6`}>
       <div className="flex h-8 shrink-0 items-center justify-between">
-        <h2 className="text-[17px] font-semibold text-ink">Playback</h2>
+        <h2 className="text-[15px] font-semibold text-ink">Playback</h2>
         <button
           onClick={onToggle}
           disabled={!analysis}
@@ -146,11 +146,11 @@ export function PlaybackPanel({ range, draft, pickerOpen, settings, analysis, co
             tooLong ? 'border-stopped' : pickerOpen ? 'border-primary' : 'border-transparent'
           }`}
         >
-          <span className="flex min-w-0 items-center gap-3 text-[13px] font-medium text-ink">
+          <span className="flex min-w-0 items-center gap-3 text-[12px] font-medium text-ink">
             <FontAwesomeIcon icon={faClock} className="shrink-0 text-primary" />
             <span className="truncate">{card}</span>
           </span>
-          <span className={`shrink-0 text-[11px] ${tooLong ? 'text-stopped-fg' : 'text-ink-3'}`}>Max {MAX_DAYS} days</span>
+          <span className={`shrink-0 text-[10px] ${tooLong ? 'text-stopped-fg' : 'text-ink-3'}`}>Max {MAX_DAYS} days</span>
         </button>
       </div>
 
@@ -189,7 +189,7 @@ export function PlaybackPanel({ range, draft, pickerOpen, settings, analysis, co
               tone={analysis.overSpeed.length ? 'text-stopped-fg' : 'text-ink'}
             />
           </div>
-          <p className="mt-3 text-[11px] text-ink-3">Tap a stop or over-speed marker on the map for details.</p>
+          <p className="mt-3 text-[10px] text-ink-3">Tap a stop or over-speed marker on the map for details.</p>
         </div>
       )}
     </div>

@@ -32,7 +32,7 @@ export function KpiRow({ kpis, selected, onSelect }: Props) {
             type="button"
             aria-pressed={active}
             onClick={() => onSelect(t.plan)}
-            className={`flex w-[260px] shrink-0 snap-start flex-col gap-3 rounded-2xl border bg-surface p-4 text-left md:w-auto md:shrink transition-colors hover:border-primary/60 ${
+            className={`flex w-[234px] shrink-0 snap-start flex-col gap-3 rounded-2xl border bg-surface p-4 text-left md:w-auto md:shrink transition-colors hover:border-primary/60 ${
               active ? 'border-primary bg-selected ring-1 ring-primary' : 'border-line'
             }`}
           >
@@ -41,11 +41,11 @@ export function KpiRow({ kpis, selected, onSelect }: Props) {
                 <FontAwesomeIcon icon={t.icon} />
               </span>
               <div className="min-w-0 flex-1">
-                <div className="truncate text-[13px] text-ink-2">{t.label}</div>
+                <div className="truncate text-[12px] text-ink-2">{t.label}</div>
                 {value === undefined ? (
-                  <div className="mt-1 h-7 w-[72px] rounded-lg bg-skeleton motion-safe:animate-pulse" />
+                  <div className="mt-1 h-7 w-[65px] rounded-lg bg-skeleton motion-safe:animate-pulse" />
                 ) : (
-                  <div className="text-[28px] font-semibold leading-9 text-ink">{value}</div>
+                  <div className="text-[25px] font-semibold leading-9 text-ink">{value}</div>
                 )}
               </div>
               {kpis && <span className="text-xs text-ink-3">{formatPercent(value ?? 0, kpis.total)}</span>}

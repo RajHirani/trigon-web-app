@@ -159,16 +159,16 @@ export default function PlaybackPage() {
       </div>
 
       <div
-        className={`pointer-events-none absolute inset-0 z-20 flex flex-col gap-4 p-4 pr-[68px] lg:p-6 lg:pr-[68px] ${
-          showRoute ? 'pb-[160px] lg:pb-[160px]' : ''
+        className={`pointer-events-none absolute inset-0 z-20 flex flex-col gap-4 p-4 pr-[61px] lg:p-6 lg:pr-[61px] ${
+          showRoute ? 'pb-[144px] lg:pb-[144px]' : ''
         }`}
       >
         <div className="pointer-events-none flex flex-wrap items-start gap-4 lg:items-center lg:gap-6">
-          <div className="pointer-events-auto w-full lg:w-[640px] lg:max-w-[calc(100%-120px)]">
+          <div className="pointer-events-auto w-full lg:w-[576px] lg:max-w-[calc(100%-120px)]">
             <PlaybackHeader vehicle={v} range={range} onBack={goBack} />
           </div>
         </div>
-        <div className="pointer-events-none relative flex min-h-0 w-full flex-col lg:w-[396px] [&>*]:pointer-events-auto">
+        <div className="pointer-events-none relative flex min-h-0 w-full flex-col lg:w-[356px] [&>*]:pointer-events-auto">
           <PlaybackPanel
             range={range}
             draft={pickerOpen ? draft : null}

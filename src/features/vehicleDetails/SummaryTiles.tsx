@@ -36,19 +36,19 @@ function Tile({
   children: React.ReactNode
 }) {
   return (
-    <div className={`${CARD} flex min-h-[124px] flex-col justify-between gap-3 p-5`}>
+    <div className={`${CARD} flex min-h-[112px] flex-col justify-between gap-3 p-5`}>
       <div className="flex items-center gap-3">
         <IconTile tone={tone}>{icon}</IconTile>
-        <span className="min-w-0 flex-1 truncate text-[13px] font-medium text-ink-2">{label}</span>
+        <span className="min-w-0 flex-1 truncate text-[12px] font-medium text-ink-2">{label}</span>
         {aside}
       </div>
-      <div className="flex items-baseline gap-1.5 text-[28px] font-semibold leading-[42px] text-ink">{children}</div>
+      <div className="flex items-baseline gap-1.5 text-[25px] font-semibold leading-[38px] text-ink">{children}</div>
     </div>
   )
 }
 
 const Unit = ({ children }: { children: React.ReactNode }) => (
-  <span className="mr-1.5 text-sm font-medium leading-[21px] text-ink-3 last:mr-0">{children}</span>
+  <span className="mr-1.5 text-sm font-medium leading-[19px] text-ink-3 last:mr-0">{children}</span>
 )
 
 function Duration({ minutes }: { minutes: number }) {
@@ -74,10 +74,10 @@ function LockSwitch({ locked, disabled, onToggle }: { locked: boolean; disabled:
       aria-label="Device lock"
       disabled={disabled}
       onClick={onToggle}
-      className={`relative h-[30px] w-[52px] shrink-0 rounded-full transition-colors disabled:opacity-60 ${locked ? 'bg-primary' : 'bg-switch-off'}`}
+      className={`relative h-[27px] w-[47px] shrink-0 rounded-full transition-colors disabled:opacity-60 ${locked ? 'bg-primary' : 'bg-switch-off'}`}
     >
       <span
-        className={`absolute top-[3px] h-6 w-6 rounded-full bg-white shadow transition-[left] ${locked ? 'left-[25px]' : 'left-[3px]'}`}
+        className={`absolute top-[2.5px] h-6 w-6 rounded-full bg-white shadow transition-[left] ${locked ? 'left-[22px]' : 'left-[2.5px]'}`}
       />
     </button>
   )
@@ -102,7 +102,7 @@ export function SummaryTiles({ summary: s, fuelPercent, lockBusy, onToggleLock }
       <Tile icon={fa(faHourglassHalf)} tone="bg-idle-bg text-idle-fg" label="Idle duration">
         <Duration minutes={s.idleMinutes} />
       </Tile>
-      <Tile icon={<span className="h-3.5 w-3.5 rounded-[3px] bg-stopped" />} tone="bg-stopped-bg" label="Stop duration">
+      <Tile icon={<span className="h-3.5 w-3.5 rounded-[2.5px] bg-stopped" />} tone="bg-stopped-bg" label="Stop duration">
         <Duration minutes={s.stopMinutes} />
       </Tile>
       <Tile icon={fa(faClock)} tone="bg-offline-bg text-ink-2" label="Total working duration">
@@ -146,7 +146,7 @@ export function AddressCard({ address, lat, lng }: { address: string; lat: numbe
     <div className={`${CARD} flex flex-wrap items-center gap-4 p-5`}>
       <IconTile tone="bg-icon-tile text-primary">{fa(faLocationDot)}</IconTile>
       <div className="min-w-0 flex-1 basis-60">
-        <div className="text-[13px] font-medium text-ink-2">Address</div>
+        <div className="text-[12px] font-medium text-ink-2">Address</div>
         <div className="text-base font-medium text-ink">{address}</div>
       </div>
       <a
@@ -169,20 +169,20 @@ export function SummarySkeleton() {
     <div aria-hidden className="flex flex-col gap-4">
       <div className={TILE_GRID}>
         {Array.from({ length: 8 }, (_, i) => (
-          <div key={i} className={`${CARD} flex min-h-[124px] flex-col justify-between gap-3 p-5`}>
+          <div key={i} className={`${CARD} flex min-h-[112px] flex-col justify-between gap-3 p-5`}>
             <div className="flex items-center gap-3">
               <div className={`${PULSE} h-11 w-11 shrink-0 rounded-xl bg-skeleton-soft`} />
-              <div className={`${PULSE} h-3 w-[120px] rounded-md bg-skeleton-soft`} />
+              <div className={`${PULSE} h-3 w-[108px] rounded-md bg-skeleton-soft`} />
             </div>
-            <div className={`${PULSE} h-[22px] w-[150px] rounded-md bg-skeleton`} />
+            <div className={`${PULSE} h-[20px] w-[135px] rounded-md bg-skeleton`} />
           </div>
         ))}
       </div>
       <div className={`${CARD} flex items-center gap-4 p-5`}>
         <div className={`${PULSE} h-11 w-11 shrink-0 rounded-xl bg-skeleton-soft`} />
         <div className="flex min-w-0 flex-1 flex-col gap-2">
-          <div className={`${PULSE} h-3 w-[90px] rounded-md bg-skeleton-soft`} />
-          <div className={`${PULSE} h-4 w-full max-w-[620px] rounded-md bg-skeleton`} />
+          <div className={`${PULSE} h-3 w-[81px] rounded-md bg-skeleton-soft`} />
+          <div className={`${PULSE} h-4 w-full max-w-[558px] rounded-md bg-skeleton`} />
         </div>
       </div>
     </div>

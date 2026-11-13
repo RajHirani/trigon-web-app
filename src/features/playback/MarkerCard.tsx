@@ -6,13 +6,13 @@ import { formatClockMs, formatDuration, formatDistance } from './range'
 import type { MarkerSelection, OverSpeedEvent, Stop } from './types'
 import { usePlaceName } from './usePlayback'
 
-const CAPTION = 'text-[10px] font-medium uppercase tracking-wide text-ink-3'
+const CAPTION = 'text-[9px] font-medium uppercase tracking-wide text-ink-3'
 
 function Column({ label, value, tone = 'text-ink' }: { label: string; value: string; tone?: string }) {
   return (
     <div className="min-w-0">
       <div className={CAPTION}>{label}</div>
-      <div className={`mt-1 whitespace-nowrap text-[13px] font-medium ${tone}`}>{value}</div>
+      <div className={`mt-1 whitespace-nowrap text-[12px] font-medium ${tone}`}>{value}</div>
     </div>
   )
 }
@@ -37,17 +37,17 @@ export function MarkerCard({ selection, stop, event, vehicle, playIdx, onClose, 
   const kind = selection.kind
 
   return (
-    <div className="w-[296px] rounded-2xl border border-line bg-surface p-4 shadow-[0_8px_24px_rgba(15,27,45,0.18)]">
+    <div className="w-[266px] rounded-2xl border border-line bg-surface p-4 shadow-[0_8px_24px_rgba(15,27,45,0.18)]">
       <div className="flex items-start gap-3">
         <span
-          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[13px] font-semibold ${
+          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[12px] font-semibold ${
             kind === 'stop' ? 'bg-ink text-surface' : kind === 'overSpeed' ? 'bg-stopped text-white' : 'bg-primary text-on-primary'
           }`}
         >
           {kind === 'stop' ? selection.n : kind === 'overSpeed' ? '!' : <FontAwesomeIcon icon={faLocationDot} className="text-xs" />}
         </span>
         <div className="min-w-0 flex-1">
-          <div className="text-[15px] font-semibold leading-5 text-ink">
+          <div className="text-[14px] font-semibold leading-5 text-ink">
             {kind === 'stop' ? `Stop ${selection.n}` : kind === 'overSpeed' ? `Over-speed ${selection.n}` : 'Vehicle position'}
           </div>
           <div className="truncate text-xs text-ink-3">{place.isPending ? 'Finding location…' : (place.data ?? 'Location unavailable')}</div>
@@ -88,7 +88,7 @@ export function MarkerCard({ selection, stop, event, vehicle, playIdx, onClose, 
       <div className="mt-3 rounded-lg bg-surface-muted px-3 py-2">
         <div className={CAPTION}>Location</div>
         <div className="mt-1 flex items-center justify-between gap-2">
-          <span className="select-all text-[13px] font-medium text-ink">{formatCoords(point.lat, point.lng)}</span>
+          <span className="select-all text-[12px] font-medium text-ink">{formatCoords(point.lat, point.lng)}</span>
           <a
             href={`https://www.google.com/maps/search/?api=1&query=${point.lat},${point.lng}`}
             target="_blank"
@@ -98,14 +98,14 @@ export function MarkerCard({ selection, stop, event, vehicle, playIdx, onClose, 
             className="flex shrink-0 items-center gap-1.5 text-xs font-medium text-primary hover:underline"
           >
             Google Maps
-            <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="text-[10px]" />
+            <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="text-[9px]" />
           </a>
         </div>
       </div>
 
       <button
         onClick={() => onPlayFrom(playIdx)}
-        className="mt-3 inline-flex h-10 w-full items-center justify-center rounded-lg bg-primary text-[13px] font-medium text-on-primary hover:bg-primary-hover"
+        className="mt-3 inline-flex h-10 w-full items-center justify-center rounded-lg bg-primary text-[12px] font-medium text-on-primary hover:bg-primary-hover"
       >
         Play from here
       </button>
